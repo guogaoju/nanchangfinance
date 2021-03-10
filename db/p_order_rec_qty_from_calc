@@ -1,0 +1,21 @@
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_order_rec_qty_from_calc`(in id int, in is_del int, in is_back int)
+BEGIN
+    #重新计算来源数量，设置是否关闭的标记
+    declare id_from int;
+    declare sum_qty decimal(8,3) default 0;
+    select  c_rec_from into id_from from t_order_rec where c_id= id;
+    delete from t_order_rec where c_id= id and  is_del=1;
+
+    select  sum(c_qty) into sum_qty from t_order_rec A,t_order B 
+        where A.c_order=B.c_id and A.c_rec_from= id_from and B.c_status >0
+            and ifnull(B.c_is_back,0)= is_back;
+            
+    if is_back=1 then
+        update t_docu_rec set c_close=0,c_qty_to= sum_qty where c_id = id_from;
+    else
+        update t_order_apply_rec set c_close=0,c_qty_to= sum_qty where c_id = id_from;
+    end if;
+
+END;;
+DELIMITER ;

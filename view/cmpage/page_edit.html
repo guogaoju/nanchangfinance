@@ -1,0 +1,18 @@
+
+<%- parms.editHeaderHtml%>
+<div class="bjui-pageContent">
+    <form id="edit<%= parms.c_modulename%>Form" action="/cmpage/page/save" data-toggle="validate" data-alertmsg="true">
+        <input id="<%= parms.c_modulename%>ID" name="id" type="hidden" value="<%= parms.editID%>" />
+        <input id="listIds" name="listIds" type="hidden" value="<%= parms.listIds%>" />
+        <input name="modulename" type="hidden" value="<%= parms.c_modulename%>" />
+        <input name="parmsUrl" type="hidden" value="<%= JSON.stringify(parms.parmsUrl)%>" />
+        <!-- <div id="edit<%= parms.c_modulename%>Table" class="bjui-row col-<%= parms.c_edit_column%>"> -->
+            <%- editHtml%>
+        <!-- </div> -->
+    </form>
+</div>
+<div class="bjui-pageFooter" >
+    <ul>
+        <%- btnHtml%>
+    </ul>
+</div>

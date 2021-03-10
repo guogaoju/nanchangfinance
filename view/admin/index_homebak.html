@@ -1,0 +1,73 @@
+<style type="text/css">
+    .b-light {
+        border-color: #d9e4e6;
+    }
+    .b-r {
+        border-right: 1px solid #cccccc;
+    }
+</style>
+<div class="bjui-pageHeader" style="background:#FFF;">
+    <div style="padding: 0 15px;">
+        <h4 style="margin-bottom:20px;">
+            南昌县供应链金融系统3.0+　<small>轻松融资，专注您的业务，南昌县供应链金融竭诚为您服务</small>
+
+        </h4>
+        <div class="row" style="margin-top:10px;">
+            <section class="panel panel-default">
+                <header class="panel-footer bg-white">
+                    <div class="row text-center no-gutter">
+                        <div class="col-md-3 b-r b-light">
+                            <p class="h3 font-bold m-t"><%= vb.suppliercnt%></p>
+                            <p class="text-muted">供应商企业数量</p>
+                        </div>
+                        <div class="col-md-3 b-r b-light">
+                            <p class="h3 font-bold m-t"><%= vb.recievecnt%></p>
+                            <p class="text-muted">竣工项目融资</p>
+                        </div>
+                        <div class="col-md-3 b-r b-light">
+                            <p class="h3 font-bold m-t"><%= vb.buildcnt%></p>
+                            <p class="text-muted">在建项目融资</p>
+                        </div>
+                        <div class="col-md-3 b-r b-light">
+                            <p class="h3 font-bold m-t"><%= vb.moneycnt%></p>
+                            <p class="text-muted">供应链金融总金额</p>
+                        </div>
+                    </div>
+                </header>
+            </section>
+            <div class="col-md-6" style="padding:5px;">
+                <div class="alert alert-success" role="alert" style="margin:0 0 5px; padding:5px 15px;">
+                    <strong>相关文档</strong>
+                    <br><span class="label label-default">新手上路：</span> <a href="#" target="_blank">第一次使用供应链</a>
+                    <br><span class="label label-default">如何申请：</span> <a href="#">如何申请</a>
+                    <br><span class="label label-default">常见问题：</span> <a href="#">常见问题</a>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding:5px;">
+                <div class="alert alert-info" role="alert" style="margin:0 0 5px; padding:5px 15px;">
+                    <strong>其他服务</strong>
+                    <br><span class="label label-default">集采平台：</span> <a href="#" target="_blank">www.17koubei.com</a>
+                    <br><span class="label label-default">客服服务：</span> <a href="#">0791-87311029</a>
+                    <br><span class="label label-default">公司地址：</span> <a href="#">江西省南昌市南昌县莲富路888号房管局15楼</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <div class="bjui-pageContent" style="border:0px solid #FFF;overflow:hidden;">
+            <fieldset style="height:100%;border:0px solid #F00">
+                <!-- <legend>-</legend> -->
+                <!-- Tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                        <!-- <li class="active"><a href="#gitDiv" role="tab" data-toggle="tab">项目反馈</a></li> -->
+                        <li class="active"><a href="#msgDiv" role="tab" data-toggle="tab">代办事项</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content" style="height:92%">
+                        <div class="tab-panel" id="msgDiv" style="height:98%;"  data-toggle="autoajaxload" data-url="/cmpage/page/list?modulename=Msg"></div>
+                </div>
+            </fieldset>
+	</div>

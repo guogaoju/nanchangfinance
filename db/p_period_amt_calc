@@ -1,0 +1,11 @@
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_period_amt_calc`(in period_id int)
+BEGIN
+    #计算某个期次的合计数金额
+    select @sum_begin:=sum(c_begin), @sum_in :=sum(c_in), @sum_out :=sum(c_out), @sum_end :=sum(c_end) 
+        from t_period_goods where c_period = period_id;
+    update t_period set c_begin = @sum_begin,c_in = @sum_in,c_out = @sum_out,c_end = @sum_end
+        where c_id = period_id;
+
+END;;
+DELIMITER ;

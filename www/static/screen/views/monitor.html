@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化demo</title>
+    <link href="../styles/common.css" rel="stylesheet">
+    <link href="../styles/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/bootstrap-table.css" rel="stylesheet">
+    <link href="../styles/pagination.css" rel="stylesheet">
+
+    <script src="../scripts/Plugin/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/Plugin/echarts.min.js"></script>
+    <script src="../scripts/Plugin/jquery.pagination.min.js"></script>
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/chronic.js"></script>
+    <script src="../scripts/ezuikit.js"></script>
+    
+</head>
+<body>
+<!--顶部-->
+<header class="header left">
+    <div class="left nav" style="margin-left:10px;">
+        <ul>
+            <li><a id="a0" href="index.html">数据概况</a> </li>
+            <li><a id="a1" href="quota.html">指标分析</a> </li>
+            <li><a id="a2" href="trend.html">趋势分析</a> </li>
+            <li><a id="a3" href="chronic.html">最新采购列表</a> </li>
+        </ul>
+    </div>
+    <div class="header_center left" style="position:relative;">
+  
+        <h1 style="margin-top:10px;"><strong>南昌县供应链金融项目</strong></h1>
+
+    </div>
+    <div class="right nav" style="margin-right:10px;width:150px;">
+        <ul>
+            <li class="nav_active"><a id="a4" href="monitor.html">实时监控</a> </li>
+        </ul>
+      <!-- <img src="../images/logo.png" style="height:60px;margin-top:10px;margin-right:40px;"> -->
+    </div>
+</header>
+<!--内容部分-->
+<div class="con left" style="width: 48%;margin-left: 1%;margin-bottom: 25px;margin-top:50px;">
+
+  <video id="myPlayer" poster="../images/34.png" controls playsInline webkit-playsinline autoplay style="width:100%">
+    <source src="http://hls01open.ys7.com/openlive/616c56fd20e04898b29967fc0bc079c1.hd.m3u8" type="application/x-mpegURL" />
+ 
+  </video>
+
+</div>
+
+<div class="con right" style="width: 48%;margin-right: 1%;margin-bottom: 25px;margin-top:50px;">
+
+  <video id="myPlayer1" poster="../images/98.png" controls playsInline webkit-playsinline autoplay style="width:100%" >
+    <source src="http://hls01open.ys7.com/openlive/49ce2f590bca442ca69091e7f8449ab0.hd.m3u8" type="application/x-mpegURL" />
+ 
+  </video>
+
+</div>
+
+</body>
+<script>
+      var player = new EZUIPlayer('myPlayer');
+      player.on('error', function(){
+          console.log('error');
+      });
+      player.on('play', function(){
+          console.log('play');
+      });
+      player.on('pause', function(){
+          console.log('pause');
+      });
+
+      var player1 = new EZUIPlayer('myPlayer1');
+      player1.on('error', function(){
+          console.log('error');
+      });
+      player1.on('play', function(){
+          console.log('play');
+      });
+      player1.on('pause', function(){
+          console.log('pause');
+      });
+   
+  </script>
+</html>

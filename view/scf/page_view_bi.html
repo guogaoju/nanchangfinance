@@ -1,0 +1,183 @@
+
+<div class="bjui-pageContent">
+    <input type="hidden" id="listIds" name="listIds" value="<%= mod.listIds%>" />
+    <section class="panel panel-default">
+        <header class="panel-footer bg-white">
+            <div class="row text-center no-gutter">
+                <div class="col-md-3 b-r b-light">
+                    <p class="h3 font-bold m-t">123</p>
+                    <p class="text-muted">供应商企业数量</p>
+                </div>
+                <div class="col-md-3 b-r b-light">
+                    <p class="h3 font-bold m-t">123</p>
+                    <p class="text-muted">竣工项目融资</p>
+                </div>
+                <div class="col-md-3 b-r b-light">
+                    <p class="h3 font-bold m-t">123</p>
+                    <p class="text-muted">在建项目融资</p>
+                </div>
+                <div class="col-md-3 b-r b-light">
+                    <p class="h3 font-bold m-t">123</p>
+                    <p class="text-muted">供应链金融总金额</p>
+                </div>
+            </div>
+        </header>
+    </section>
+    <div id="container" style="height: 350px;float:left"></div>
+    <div id="container_bar" style="height: 350px;float:right"></div>
+</div>
+
+<div class="bjui-pageFooter" >
+    <ul>
+        <%- btnHtml%>
+    </ul>
+</div>
+
+
+
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+            var dom = document.getElementById("container");
+            var myChart = echarts.init(dom);
+            var app = {};
+            option = null;
+            option = {
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    x: 'center',
+                    data:['定性分析','定量分析']
+                },
+                radar: [
+                    {
+                        indicator: [
+                            {text: '<%- dingxingArr[4]%>', max: 100},
+                            {text: '<%- dingxingArr[5]%>', max: 100},
+                            {text: '<%- dingxingArr[6]%>', max: 100},
+                            {text: '<%- dingxingArr[7]%>', max: 100}
+                        ],
+                        center: ['25%','40%'],
+                        radius: 80
+                    },
+                    {
+                        indicator: [
+                            {text: '<%- dingxingArr[0]%>', max: 100},
+                            {text: '<%- dingxingArr[1]%>', max: 100},
+                            {text: '<%- dingxingArr[2]%>', max: 100},
+                            {text: '<%- dingxingArr[3]%>', max: 100}
+                        ],
+                        radius: 80,
+                        center: ['50%','40%'],
+                    }
+                ],
+                series: [
+                    {
+                        type: 'radar',
+                         tooltip: {
+                            trigger: 'item'
+                        },
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data: [
+                            {
+                                value: [<%- rank.i_LSHBJ_score%>,<%- rank.i_ZZHGL_score%>,<%- rank.i_QYJZHL_score%>,<%- rank.i_XYZHK_score%>],
+                                name: '定性分析'
+                            }
+                        ]
+                    },
+                    {
+                        type: 'radar',
+                        radarIndex: 1,
+                        tooltip: {
+                            trigger: 'item'
+                        },
+                        itemStyle: {normal: {areaStyle: {type: 'default'}}},
+                        data: [
+                            {
+                                value: [<%- rank.c_yinglinengli%>,<%- rank.c_zichanzhiliang%>,<%- rank.c_zhaiwufengxian%>,<%- rank.c_jingyingzengzhang%>],
+                                name: '定量分析'
+                            }
+                        ]
+                    }
+                ]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+       </script>
+       <script type="text/javascript">
+            var dom_bar = document.getElementById("container_bar");
+            var myChart_bar = echarts.init(dom_bar);
+            var app_bar = {};
+            option_bar = null;
+            var labelOption = {
+                normal: {
+                    show: true,
+                    //position: app.config.position,
+                    //distance: app.config.distance,
+                    //align: app.config.align,
+                    //verticalAlign: app.config.verticalAlign,
+                    //rotate: app.config.rotate,
+                    // formatter: '{c}  {name|{a}}',
+                    fontSize: 10,
+                    rich: {
+                        name: {
+                            textBorderColor: '#000'
+                        }
+                    }
+                }
+            };
+            option_bar = {
+                color: ['#3398DB'],
+                tooltip : {
+                    trigger: 'axis',
+                    axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis : [
+                    {
+                        type : 'category',
+                        data : ['<%- dingliangArr[0]%>', '<%- dingliangArr[1]%>', '<%- dingliangArr[2]%>', '<%- dingliangArr[3]%>', '<%- dingliangArr[4]%>', '<%- dingliangArr[5]%>', '<%- dingliangArr[6]%>', '<%- dingliangArr[7]%>', '<%- dingliangArr[8]%>', '<%- dingliangArr[9]%>', '<%- dingliangArr[10]%>', '<%- dingliangArr[11]%>', '<%- dingliangArr[12]%>', '<%- dingliangArr[13]%>', '<%- dingliangArr[14]%>'],
+                        axisTick: {
+                            alignWithLabel: false
+                        }
+                    }
+                ],
+                yAxis : [
+                    {
+                        type : 'value'
+                    }
+                ],
+                series : [
+                    {
+                        name:'直接访问',
+                        type:'bar',
+                        barWidth: '60%',
+                        label: labelOption,
+                        data:[<%- rank.i_JZCHSHYL_score%>,<%- rank.i_ZZCHBCHL_score%>,<%- rank.i_XSHLRL_score%>,<%- rank.i_CBFYLRL_score%>,<%- rank.i_ZBSYL_score%>,<%- rank.i_ZZCHZHZHL_score%>,<%- rank.i_YSHZHKZHZHL_score%>,<%- rank.i_LDZCHZHZHL_score%>,<%- rank.i_ZCHFZHL_score%>,<%- rank.i_SDBL_score%>,<%- rank.i_DXFZHBL_score%>,<%- rank.i_XSHZZHL_score%>,<%- rank.i_ZBBZHZZHL_score%>,<%- rank.i_XSHLRZZHL_score%>,<%- rank.i_ZZCHZZHL_score%>
+]
+                    }
+                ]
+            };
+            if (option_bar && typeof option_bar === "object") {
+                myChart_bar.setOption(option_bar, true);
+            }
+       </script>

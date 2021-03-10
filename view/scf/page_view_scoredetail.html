@@ -1,0 +1,185 @@
+<div class="bjui-pageContent">
+    <div class="list-group">
+        <a href="#" class="list-group-item active" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                盈利能力状况
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right">
+                评分
+            </h5>
+        </a>
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                净资产收益率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_JZCHSHYL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_JZCHSHYL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                总资产报酬率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_ZZCHBCHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_ZZCHBCHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                销售（营业）利润率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_XSHLRL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_XSHLRL_score%>
+            </h5>
+        </a>
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                成本费用利润率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_CBFYLRL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_CBFYLRL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                资本收益率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_ZBSYL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_ZBSYL_score%>
+            </h5>
+        </a>
+        
+    </div>
+
+
+
+    <div class="list-group">
+        <a href="#" class="list-group-item active" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                资产质量状况
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right">
+                评分
+            </h5>
+        </a>
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                总资产周转率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_ZZCHZHZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_ZZCHZHZHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                应收账款周转率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_YSHZHKZHZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_YSHZHKZHZHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                流动资产周转率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_LDZCHZHZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_LDZCHZHZHL_score%>
+            </h5>
+        </a>
+        
+    </div>
+
+
+
+
+    <div class="list-group">
+        <a href="#" class="list-group-item active" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                债务风险状况
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right">
+                评分
+            </h5>
+        </a>
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                资产负债率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_ZCHFZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_ZCHFZHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                速动比率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_SDBL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_SDBL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                带息负债比率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_DXFZHBL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_DXFZHBL_score%>
+            </h5>
+        </a>
+        
+    </div>
+
+    <div class="list-group">
+        <a href="#" class="list-group-item active" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                经营增长状况
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right">
+                评分
+            </h5>
+        </a>
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                销售（营业）增长率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_XSHZZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_XSHZZHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                资本保值增值率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_ZBBZHZZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_ZBBZHZZHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                销售（营业）利润增长率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_XSHLRZZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_XSHLRZZHL_score%>
+            </h5>
+        </a>
+
+        <a href="#" class="list-group-item" style="height:40px;">
+            <h5 class="col-md-6 list-group-item-heading">
+                总资产增长率
+            </h5>
+            <h5 class="col-md-2 list-group-item-heading pull-right" style="font-weight:bold;color:<%if(data.i_ZZCHZZHL_score<60){%>red<%}else{%>green<%}%>">
+                <%= data.i_ZZCHZZHL_score%>
+            </h5>
+        </a>
+        
+    </div>
+</div>
+

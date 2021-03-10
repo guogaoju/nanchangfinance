@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化demo</title>
+    <link href="../styles/common.css" rel="stylesheet">
+    <script src="../scripts/Plugin/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/Plugin/echarts.min.js"></script>
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/trend.js"></script>
+</head>
+<body>
+<!--顶部-->
+<header class="header left">
+  <div class="left nav" style="margin-left:10px;">
+      <ul>
+          <li><a id="a0" href="index.html">数据概况</a> </li>
+          <li><a id="a1" href="quota.html">指标分析</a> </li>
+          <li class="nav_active"><a id="a2" href="trend.html">趋势分析</a> </li>
+          <li><a id="a3" href="chronic.html">最新采购列表</a> </li>
+          </ul>
+  </div>
+    <div class="header_center left" style="position:relative;">
+  
+        <h1 style="margin-top:10px;"><strong>南昌县供应链金融项目</strong></h1>
+
+    </div>
+    <div class="right text_right">
+      <!-- <img src="../images/logo.png" style="height:60px;margin-top:10px;margin-right:40px;"> -->
+    </div>
+
+</header>
+<!--内容部分-->
+<div class="con left" style="width:50%;">
+    <!--统计分析图-->
+    <div class="div_any">
+        <div class="left div_any01" style="width:100%;">
+            <div class="div_any_child" style="width:98%;position:relative;height: 380px;">
+                <div class="div_any_title"><img src="../images/title_13.png">主要货品信息</div>
+                <div id="histogramChart1"  style="width: 45%;display: inline-block;height: 350px;margin-top: 15px;"></div>
+                <div id="lineChart1"  style="width: 52%;height: 60%;display: inline-block;"></div>
+                <div style="width: 50%;height: 20%;display: inline-block;color:red;position: absolute;right: 2%;top: 8%;">
+                  <div style="display: inline-block;width:33%;text-align:center;">
+                    <div style="color:#fff;font-size: 18px;line-height: 32px;">入库总数(吨)</div>
+                    <div style="color:#87cefa;font-size: 30px;line-height: 42px;">7354</div>
+                  </div><div style="display: inline-block;width:33%;text-align:center;">
+                    <div style="color:#fff;font-size: 18px;line-height: 32px;">完成质押数</div>
+                    <div style="color:red;font-size: 30px;line-height: 42px;">7354</div>
+                  </div><div style="display: inline-block;width:33%;text-align:center;">
+                    <div style="color:#fff;font-size: 18px;line-height: 32px;">质押百分比</div>
+                    <div style="color:#ff7f50;font-size: 30px;line-height: 42px;">100%</div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="left div_any01" style="width:48%;height:310px;">
+          <div class="div_any_child" style="height: 310px;">
+              <div class="div_any_title"><img src="../images/title_14.png">主要风险分布</div>
+              <p id="histogramChart2" class="p_chart" style="height: 310px;"></p>
+
+          </div>
+        </div>
+          <div class="left div_table_box" style="width: 48%;height:310px;">
+              <div class="div_any_child" style="height: 310px;">
+                  <div class="div_any_title"><img src="../images/title_16.png">预警信息</div>
+                  <div class="table_p">
+                      <table>
+                          <thead><tr>
+                              <th>序号</th>
+                              <th>内容</th>
+                              <th>发布时间</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr><td>1</td><td>桃新大道库存不足：已使用90%</td><td>2020-04-22</td></tr>
+                          <tr><td>2</td><td>塔田村安置房发生一次数据波动</td><td>2020-04-22</td></tr>
+                          <tr><td>3</td><td>钢材价格已临近预警线：当前成本3500元/吨</td><td>2020-04-12</td></tr>
+                          <tr><td>4</td><td>桃新大道发生一次数据波动</td><td>2020-04-05</td></tr>
+                          <tr><td>5</td><td>钢材价格已临近预警线：当前成本3500元/吨</td><td>2020-04-05</td></tr>
+                          <tr><td>6</td><td>富山乡三山村发生一次数据波动</td><td>2020-04-05</td></tr>
+                          <tr><td>7</td><td>钢材价格已临近预警线：当前成本3500元/吨</td><td>2020-04-05</td></tr>
+                          <tr><td>8</td><td>银三角良种场发生一次数据波动</td><td>2020-04-05</td></tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="con right" style="width:50%;">
+  <div class="div_any">
+      <div class="left div_any01" style="width:100%;">
+          <div class="div_any_child" style="width:98%;position:relative;height: 380px;">
+              <div class="div_any_title"><img src="../images/title_17.png">主要出入库比</div>
+              <div id="histogramChart3"  style="width: 45%;display: inline-block;height: 400px;margin-top: 15px;"></div>
+              <div id="lineChart2"  style="width: 52%;height: 90%;display: inline-block;"></div>
+          </div>
+      </div>
+      <div class="left div_any01" style="width:48%;height:310px;">
+        <div class="div_any_child" style="height: 310px;">
+            <div class="div_any_title"><img src="../images/title_18.png">资金放款预计分布</div>
+            <p id="pieChart1" class="p_chart" style="height: 310px;"></p>
+        </div>
+      </div>
+      <div class="right div_any01" style="width:48%;height:310px;">
+          <div class="div_any_child" style="height: 310px;">
+              <div class="div_any_title"><img src="../images/title_19.png">项目进展</div>
+              <p id="pieChart2" class="p_chart" style="height: 310px;"></p>
+          </div>
+      </div>
+  </div>
+</div>
+</body>
+</html>

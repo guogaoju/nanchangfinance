@@ -1,0 +1,39 @@
+
+<div class="bjui-pageHeader">
+    <form id="pagerForm" name="page<%= mod.c_modulename%>Form" data-toggle="ajaxsearch" action="/cmpage/page/list" method="post">
+        <input type="hidden" id="modulename" name="modulename" value="<%= mod.c_modulename%>" />
+        <input name="parmsUrl" type="hidden" value="<%= JSON.stringify(mod.parmsUrl)%>" />
+        <input type="hidden" id="idSelect" name="idSelect" value="" />
+        <input type="hidden" name="listIds" value="<%= vb.listIds%>">
+
+        <% if (mod.c_pager) {%>
+            <input type="hidden" name="pageSize" value="<%= mod.pageSize%>">
+            <input type="hidden" name="pageCurrent" value="<%= mod.pageIndex%>">
+            <input type="hidden" name="orderField" value="<%= mod.orderField%>">
+            <input type="hidden" name="orderDirection" value="<%= mod.orderDirection%>">
+        <% }%>
+        <div class="bjui-searchBar">
+            <%- vb.queryHtml[0]%>
+
+            <%- vb.btnHeaderHtml%>
+
+
+            <%- vb.otherHtml%>
+
+        </div>
+        <% if(vb.queryHtml[1].length >0){ %>
+            <div class="bjui-moreSearch">
+                <%- vb.queryHtml[1]%>
+            </div>
+        <% }%>
+    </form>
+</div>
+<div class="bjui-pageContent table-responsive">
+    <table class="table table-striped table-hover " data-width="100%"
+           data-nowrap="false" data-selected-multi="<% mod.c_multiselect ? "true":""%>">
+    <%- vb.listHtml%>
+
+    </table>
+
+</div>
+<%- vb.footerHtml%>

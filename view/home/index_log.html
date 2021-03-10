@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--[if lte IE 7 ]>
+<html class="no-js ie lte7 lte8 lte9 css"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="no-js ie ie8 lte8 lte9 css"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie ie9 lte9 css"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class="no-js css">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="CmPage, ThinkJS, Node.js, B-JUI, MUI, HTML5+, MVC, 权限管理, 工作流, " />
+    <meta name="description" content="CmPage 企业信息化的二次开发框架，采用ThinkJS、B-JUI、MUI等开源框架实现。" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>CmPage - 日志记录</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="alternate icon" type="image/png" href="/static/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="http://s.amazeui.org/assets/2.x/i/app-icon72x72@2x.png" />
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.1/css/amazeui.min.css" />
+    <link rel="stylesheet" href="http://s.amazeui.org/assets/2.x/css/amaze.min.css?v=ir1seon2" />
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="http://s.amazeui.org/assets/2.x/js/jquery.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.amazeui.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="http://s.amazeui.org/assets/2.x/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <script src="http://cdn.amazeui.org/amazeui/2.7.1/js/amazeui.min.js"></script>
+    <link rel="canonical" href="http://amazeui.org/css/print?_ver=2.x" />
+    <style>
+        .get {
+            background: #1E5B94;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 120%;
+        }
+
+        .get-title {
+            font-size: 200%;
+            border: 2px solid #fff;
+            padding: 20px;
+            display: inline-block;
+        }
+
+        .get-btn {
+            background: #fff;
+        }
+
+        .footer p {
+            color: #7f8c8d;
+            margin: 0;
+            padding: 15px 0;
+            text-align: center;
+            background: #2d3e50;
+        }
+    </style>
+</head>
+<body class="" data-amui="2.x">
+
+<% include _index_header.html %>
+
+<div class="get">
+    <div class="am-g">
+        <div class="am-u-lg-12">
+            <p>
+                CmPage 日志记录，让我们能更勤快一点 ^-^
+            </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="am-g am-g-fixed" >
+    
+    <div class="am-u-sm-12">
+
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.13 -- 2017.12.18 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[修改] 调整定时任务的设置和执行方式 </li>
+                    <li>[新增] 增加消息提示模块  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.12 -- 2017.12.17 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[新增] 增加HTML5移动端的菜单、列表页面 </li>
+                    <li>[新增] 增加HTML5移动端的编辑页面 </li>
+                    <li>[新增] 增加出入库单据 </li>
+                    <li>[修改] 修正流程设置和节点授权的数据库连接等问题 </li>
+                    <li>[修改] 增加调试LOG输出时的文件链接，调试的时候 ctrl+单击 可以跳入相关位置 </li>
+                    <li>[新增] 增加当前库存和收发明细查询 </li>
+                    <li>[新增] 增加期次管理模块 </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.11 -- 2017.12.10 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[新增] 增加采购单模块 </li>
+                    <li>[新增] 增加流程的自动节点类型的执行 </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.10 -- 2017.12.03 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[修改] 把取角色和用户的权限改为缓存方式，提高页面打开速度 </li>
+                    <li>[新增] 业务模块类中引入 sequelize，以增加MSSQL的连接方式 </li>
+                    <li>[修改] 增加单据模块的数据表 </li>
+                    <li>[新增] 业务模块的主信息中增加主键和连接名称的配置 </li>
+                    <li>[新增] 模块的列表和查看页面中增加图片类型的显示 </li>
+                    <li>[修改] 增加单据模块的视图和存储过程 </li>
+                    <li>[新增] 新增采购申请单模块 </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.9 -- 2017.11.25 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[修改] 把cmpage的全局函数和常量设置改为基类的成员，以便VSCODE可以智能提示 </li>
+                    <li>[修改] 把项目的结构从多模块改为单模块结构 </li>
+                    <li>[修改] 修改地区联动的实现方式，增加二级联动和自定义字段名 </li>
+                    <li>[新增] 增加代码设置的二级和三级联动，如商品分类等 </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.8 -- 2017.11.12 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[新增] 增加定时任务的相关表 </li>
+                    <li>[新增] 实现定时任务的设置模块 </li>
+                    <li>[修改] 业务模块实现类改为从Service继承 </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="am-panel am-panel-default am-margin-lg">
+            <div class="am-panel-hd"><h2>V0.10.8 -- 2017.11.4 </h2> </div>
+            <div class="am-panel-bd">
+                <ul>
+                    <li>[修改] 修正主菜单不受角色权限控制的BUG </li>
+                    <li>[修改] 把page.js中的数据处理部分单独开来，继承关系: page_base -- page -- page_mob -- page_ms </li>
+                    <li>[修改] 修正到处EXCEL文件错误的问题 </li>
+                </ul>
+            </div>
+        </div>
+            
+    <div class="am-panel am-panel-default am-margin-lg">
+        <div class="am-panel-hd"><h2>V0.10.8 -- 2017.10.26</h2> </div>
+        <div class="am-panel-bd">
+            <ul>
+                <li>[修改] 手机DEMO的APP调试通过 </li>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-default am-margin-lg">
+        <div class="am-panel-hd"><h2>V0.10.8 -- 2017.10.13</h2> </div>
+        <div class="am-panel-bd">
+            <ul>
+                <li>[新增] 把项目升级到 ThinkJS3 </li>
+            </ul>
+        </div>
+    </div>
+    <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.7 -- 2017.04.17</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加钉钉的登录和菜单页面 </li>
+                  <li>[新增] 增加钉钉的cmpage模块列表页面 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.6 -- 2017.04.10</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 选择加入的界面增加‘全部加入’按钮 </li>
+                  <li>[新增] 将考试系统cmpage-exam的功能加入本系统 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.5 -- 2017.3.20</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 修正用户登录后不按照权限设定的问题 </li>
+                  <li>[新增] 用户登录时加入单点登录验证 </li>
+                  <li>[新增] 用户中心的用户相关接口调用 </li>
+                  <li>[新增] 增加钉钉的接口调用模块 </li>
+                  <li>[新增] 增加钉钉接口的通用调用方法 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.4 -- 2017.3.12</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 把工作流和业务模块部分的数据表独立出来分库存放，以便业务子系统间共享 </li>
+                  <li>[修改] 把调用model的地方统一改用cmpage.service()的方式调用 </li>
+                  <li>[修改] 去掉BJUI中的 DataGrid 相关的插件 </li>
+                  <li>[修改] BJUI中的菜单打开方式增加iframe方式 </li>
+                  <li>[修改] 修改t_user.c_status 的取值设置为 cmpage.enumUserStatus ,1 为正常状态 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.4 -- 2017.3.6</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加到货通知单 </li>
+                  <li>[修改] 把模块的导出数据改为该模块显示的数据 </li>
+                  <li>[修改] 增加工作流节点的权限配置类型 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.3 -- 2017.2.27</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 把单据模块移植到postgresql，并增加相应多数据库的匹配 </li>
+                  <li>[修改] 修复操作MYSQL时日期类型处理的BUG </li>
+                  <li>[修改] 为方便实现单点登录，登录页面改为默认账套，登录后可以切换账套 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.2 -- 2017.1.23</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 修正了页面按钮权限的逻辑错误 </li>
+                  <li>[新增] 增加了通用的打印页面 </li>
+                  <li>[新增] 增加了单据的‘上查’和‘下查’功能 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.9.1 -- 2017.1.16</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加业务模块的基类，数据库接口改用 Sequelize </li>
+                  <li>[新增] cmpage/base 中增加兼容 think.model.base 的若干操作数据库的方法 </li>
+                  <li>[修改] 单据模块的数据库改用 MS SQLSERVER </li>
+                  <li>[修改] 修正不能从 mssql 中取数据模型的问题 </li>
+                  <li>[新增] 增加采购申请的相关模块 </li>
+                  <li>[新增] 增加通用的选择加入页面 </li>
+                  <li>[修改] 修正了由于多数据库引起的工作流的部分BUG </li>
+                  <li>[新增] 增加采购单的单据审核流程 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.8 -- 2017.1.1</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 修改主页面头部按钮的显示方式 </li>
+                  <li>[修改] 修正查找带回页面的查询页面返回错误的问题 </li>
+                  <li>[新增] 手机端查找带回页面新增‘返回清除’按钮 </li>
+                  <li>[新增] 手机端新增附件管理页面，实现照片上传等功能 </li>
+                  <li>[新增] 增加流程模板的复制功能 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.7 -- 2016.12.25</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 实现状态流转类的工作流机制 </li>
+                  <li>[新增] 增加时间轴页面 </li>
+                  <li>[新增] 手机端查看页面 </li>
+                  <li>[新增] 重构手机端分页列表、查询和编辑页面 </li>
+                  <li>[修改] 查询的时候过滤掉敏感字符串 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.6 -- 2016.12.12</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 查看页面增加‘上一条’和‘下一条’的记录浏览功能 </li>
+                  <li>[修改] 修改page页面显示属性，使其适配于手机浏览器 </li>
+                  <li>[新增] 增加通用的附件管理功能 </li>
+                  <li>[新增] 增加编辑类型：文件上传 </li>
+                  <li>[修改] 业务模块设置的时候可以设置关联的工作流模板 </li>
+                  <li>[修改] 查找带回增加清除按钮 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.5 -- 2016.12.04</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 把常用的方法和枚举参数等放入全局对象cmpage中 </li>
+                  <li>[新增] 增加主从页面的编辑页面 </li>
+                  <li>[新增] 查询列和编辑列的类型中增加树状下拉单选或多选 </li>
+                  <li>[新增] 手机端编辑页查找带回功能 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.4 -- 2016.11.27</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 设置t_code表中参数时，可以增加颜色设置，在模块列表中显示，例如‘请假状态’</li>
+                  <li>[修改] 根据浏览器宽度设置查询列的数量 </li>
+                  <li>[新增] 流程（任务）的权限指派页面 </li>
+                  <li>[新增] 流程节点的权限指派页面 </li>
+                  <li>[新增] 业务模块中流程相关按钮的权限验证功能 </li>
+                  <li>[修改] 通用页面的按钮显示增加权限验证功能 </li>
+                  <li>[新增] 用户模块新增设置某个用户的定制权限和重置密码的功能 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.3 -- 2016.11.15</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加任务列表模块及任务节点列表等 </li>
+                  <li>[新增] 增加流程模板的节点和路径的浏览及相关操作 </li>
+                  <li>[修改] 配置中可以设置 #字段名# 为参数，系统自动替换</li>
+                  <li>[新增] 增加流程实例的轨迹图展示 </li>
+                  <li>[新增] 增加自动执行流程实例的节点的逻辑 </li>
+                  <li>[修改] 页面列表的字段和按钮数量根据浏览器宽度，打开时自动调整 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.2 -- 2016.11.06</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 模块的按钮设置分类，可增加编辑页面的按钮设置，便于和工作流的动作相关联 </li>
+                  <li>[修改] 流程引擎的相关类的设置数据，由参数形式改为类成员变量的形式 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.1 -- 2016.10.30</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 模块编辑页面增加‘上一条’和‘下一条’按钮，对应列表中记录的编辑页面 </li>
+                  <li>[修改] 公共页面的js函数，统一归到 /static/js/cmpage.js 中处理 </li>
+                  <li>[修改] 公共页面中的业务模块设置数据，由参数形式改为类成员变量的形式 </li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.8.0 -- 2016.10.23</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 业务模块的查询列设置增加了‘不操作’选项，便于只显示而不组成where子句的情况</li>
+                  <li>[修改] 升级了B-JUI框架到1.3版本，修改了主界面和菜单加载过程</li>
+                  <li>[新增] 在B-JUI1.3中增加了1.2版本的 lookup 插件</li>
+                  <li>[修改] 修改了通用编辑页面的风格，去除了原表格方式</li>
+                  <li>[修改] 修改了流程设计页面的风格，去除了原表格方式</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.9 -- 2016.10.15</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加了树状结构的参数选择查找带回页面</li>
+                  <li>[修改] 查找带回页面增加了带回的字段名称参数(returnFields)，这样可以避免额外的值覆盖</li>
+                  <li>[新增] 编辑页面字段取值除了从数据库，也可以通过函数从缓存中取值，例如 FwAct</li>
+                  <li>[新增] 流程模板设计中增加了删除节点路径的功能</li>
+                  <li>[修改] 重写页面的删除记录功能，使得业务模块的子类中可以修改删除的逻辑</li>
+                  <li>[修改] 调整了系统的菜单项</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.8 -- 2016.09.24</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加了流程模板和活动节点的图形化设计模块</li>
+                  <li>[新增] 初步实现了工作流的任务生成机制，尚有待完善</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.7 -- 2016.09.11</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 调整分页列表的搜索页面部分，增加 bjui-moreSearch 的显示方式</li>
+                  <li>[新增] 增加了流程模板和活动节点及其指派等模块设置</li>
+                  <li>[新增] 采用smartdoc输出API文档</li>
+                  <li>[新增] 增加admin和cmpage模块的API文档</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.6 -- 2016.09.04</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 后端数据库换成mysql并作相应调整</li>
+                  <li>[新增] 增加了日志记录模块</li>
+                  <li>[新增] 增加通用的记录保存日志记录，供子类定制格式</li>
+                  <li>[新增] 增加了enum类型数据的处理方法，供模块设置的时候调用</li>
+                  <li>[修改] 登录后的菜单增加权限控制</li>
+                  <li>[新增] 实现了多数据库连接的逻辑，如：demo/customer继承自cmpage/page，但demo/config/db.js中可以配置指向其他数据库</li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.5 -- 2016.08.28</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加了手机端APP登陆页面及后端的数据接口</li>
+                  <li>[新增] 增加了APP的主页面及后端的菜单和主按钮列表的接口</li>
+                  <li>[新增] 增加了APP中模块的分页列表页面和后端数据接口</li>
+                  <li>[新增] 继承common/page_mob可以定制手机端模块的页面</li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.3 -- 2016.08.14</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 增加了cmpage/page的LOGIC模块，采用ThinkJS的校验方法</li>
+                  <li>[新增] 增加了校验错误的中文提示的配置文件</li>
+                  <li>[新增] 增加了ThinkJS模块demo, 用于存放框架演示用的业务模块</li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.2 -- 2016.08.10</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 模块主信息中增加别名一项</li>
+                  <li>[新增] 增加了通用页面导出EXCEL文件的功能</li>
+                  <li>[修改] 修正了编辑页面的checkbox类型的值保持错误的问题</li>
+                  <li>[修改] 把三级地区联动改成可以二级联动</li>
+                  <li>[修改] 把设置功能菜单的方式由树状CURD改为CodeList方式的CURD</li>
+                  <li>[新增] 增加关闭当前TAB的函数，供模块的按钮调用，用来替换BJUI的关闭按钮</li>
+                  <li>[新增] 增加了客户资料的功能模块</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.7.1 -- 2016.08.06</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 把页面展示模块类从 cmpage 移入 common，并调整相应继承类中的路径</li>
+                  <li>[新增] 新增了登录页面的JS验证码的功能</li>
+                  <li>[新增] 新增当前用户修改密码的功能</li>
+                  <li>[新增] 新增了前端介绍框架的网站页面，包括首页、文档、日志等，采用AmazeUI</li>
+              </ul>
+          </div>
+      </div>
+
+    <div class="am-panel am-panel-default am-margin-lg">
+      <div class="am-panel-hd"><h2>V0.6.8 -- 2016.07.11</h2> </div>
+      <div class="am-panel-bd">
+        <ul>
+          <li>[修改] 修正了角色与权限模块显示速度慢的问题</li>
+          <li>[修改] 把原先用存储过程实现的递归取树状数据的方式改为用JS递归函数实现</li>
+          <li>[新增] 实现了模块查询和编辑页面的查找带回功能</li>
+            <li>[修改] 把各个模块中的query(sql)改为TkinJS的CRUD方法，便于实现多数据库的连接</li>
+        </ul>
+      </div>
+    </div>
+    <div class="am-panel am-panel-default am-margin-lg">
+      <div class="am-panel-hd"><h2>V0.6.6 -- 2016.06.28</h2> </div>
+      <div class="am-panel-bd">
+        <ul>
+          <li>[新增] 实现了用户登录的页面和逻辑</li>
+          <li>[新增] 实现了账套和用户模块</li>
+          <li>[新增] 实现了用户登录验证账套权限的功能</li>
+        </ul>
+      </div>
+    </div>
+    <div class="am-panel am-panel-default am-margin-lg">
+      <div class="am-panel-hd"><h2>V0.6.5 -- 2016.06.10</h2> </div>
+      <div class="am-panel-bd">
+        <ul>
+          <li>[修改] 修正地区联动不能正常显示的问题</li>
+          <li>[新增] 实现日志查询模块</li>
+          <li>[新增] 实现登录查询模块</li>
+        </ul>
+      </div>
+    </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.6.4 -- 2016.05.30</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 把缓存连接改为 redis ,测试通过</li>
+                  <li>[新增] 实现通过配置模块名称和方法来调用，获取数据后在模块列表或者编辑页面展示</li>
+                  <li>[新增] 增加地区表并实现相关方法</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.6.3 -- 2016.05.10</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[修改] 代码于参数（t_code）相关的数据进行缓存，并提供相应方法供模块调用</li>
+                  <li>[新增] 用户（vw_user）相关的数据进行缓存，并提供相应方法供模块调用</li>
+                  <li>[新增] 首页默认打开模块设置页面</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>V0.6.0 -- 2016.04.07</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>[新增] 修改首页，增加QQ联系方式等</li>
+                  <li>-----</li>
+                  <li>[修改] 调整显示的菜单项</li>
+                  <li>[新增] 代码与参数页面的通用化</li>
+                  <li>[新增] 代码与参数页面的树状展示，采用ztree</li>
+                  <li>-----</li>
+                  <li>[新增] 新增模块emp用于测试模块的分页列表展示、新增、编辑、查看、删除操作，测试通过</li>
+                  <li>[新增] 模块显示列的设置页面</li>
+                  <li>[新增] 模块编辑列的设置页面</li>
+                  <li>[新增] 模块按钮的设置页面</li>
+                  <li>[新增] 模块查询列的设置页面</li>
+                  <li>[新增] 模块主信息的设置页面</li>
+                  <li>-----</li>
+              </ul>
+          </div>
+      </div>
+      <div class="am-panel am-panel-default am-margin-lg">
+          <div class="am-panel-hd"><h2>CmPage 版本发布策略</h2> </div>
+          <div class="am-panel-bd">
+              <ul>
+                  <li>1~2 周发布一个小版本，如：1.0.1 => 1.0.2（小功能增加，bug 修复等）</li>
+                  <li>1~3 月发布一个中版本，如：1.0.0 => 1.1.0（较大功能增加，部分模块重构等）</li>
+                  <li>1~2 年发布一个大版本，如：1.0.0 => 2.0.0（框架整体设计、重构等）</li>
+                  <li>-----</li>
+                  <li>以上情况会因为一些特殊情况进行调整。</li>
+              </ul>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<div class="amz-toolbar" id="amz-toolbar">
+    <a href="#top" title="回到顶部" class="am-icon-btn am-icon-arrow-up" id="amz-go-top"></a>
+    <a href="/admin/index/faq" title="常见问题" class="am-icon-faq am-icon-btn am-icon-question-circle"></a>
+</div>
+
+
+<% include _index_footer.html %>
+
+
+<script src="http://s.amazeui.org/assets/2.x/js/handlebars.min.js"></script>
+<script src="http://s.amazeui.org/assets/2.x/js/main.min.js"></script>
+
+
+</body>
+</html>

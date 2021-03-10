@@ -1,0 +1,134 @@
+'use strict';
+// +----------------------------------------------------------------------
+// | CmPage [ 通用页面框架 ]
+// +----------------------------------------------------------------------
+// | Licensed under the Apache License, Version 2.0
+// +----------------------------------------------------------------------
+// | Author: defans <defans@sina.cn>
+// +----------------------------------------------------------------------
+
+/**
+ 单据流转的业务模块，实现了采购、库存管理相关的业务逻辑
+ @module docu.model
+ */
+
+/**
+ * 通用的单据行为实现类，单据保存于表 t_docu,t_order,t_order_apply,t_pay,t_xxxx_rec </br>
+ * 相关表：t_goods, t_supplier, t_period,t_period_stock, 参数存于 t_code
+ * @class docu.model.docu
+ */
+
+const docuRec = require('./docu_rec.js');
+
+module.exports = class extends docuRec {
+    /**
+     * 增加物料明细，根据模块名称判断数据来源，实现相应的逻辑，
+     × --------> 当前逻辑：销售出库单不用额外取资料
+     * @method  goodsAdd
+     * @return {object} 返回前端的状态对象
+     */
+    async goodsAdd(fromID, docuID) {
+        if (think.isEmpty(docuID)) return {
+            statusCode: 300,
+            message: `单据ID错误!`
+        };
+        let goodsRec = await this.model('t_goods').where(`c_id=${fromID}`).find();
+        let toRec = {
+            c_docu: docuID,
+            c_goods: goodsRec.c_id,
+            c_unit: goodsRec.c_unit,
+            c_qty: 1,
+            c_price: 0,
+            c_price_tax: 0,
+            c_tax: 17,
+            c_amt: 0,
+            c_amt_tax: 0,
+            c_qty_from:  0,
+            c_qty_to: 0,
+            c_rec_from: 0,
+            c_no_from: '',
+            c_no_order: '',
+            c_qty_kp: 0,
+            c_qty_stock: 0,
+            c_close: 0,
+            c_supplier: 0,
+            c_memo: '',
+            c_price_out:0,
+            c_price_out_tax:0,
+            c_amt_out:0,
+            c_amt_out_tax:0
+        };
+        let recID = await this.model('t_docu_rec').add(toRec);
+        if (recID > 0) {
+            await this.query(`update t_order_rec set c_qty_to=c_qty,c_close =1 where c_id=${fromID}`);
+        }
+        return {
+            statusCode: recID > 0 ? 200 : 300,
+            message: recID > 0 ? "" : "操作失败！"
+        };
+    }
+
+    /**
+     * 删除记录,<br/>
+     * 子类中可以重写本方法，实现其他的删除逻辑，如判断是否可以删除，删除相关联的其他记录等等
+     * @method  pageDelete
+     * @return {object} 记录对象
+     * await this.query(`call p_period_goods_calc('${periodID}',${stockID});`);
+     */
+    async pageDelete() {
+        //let rec = this.model('vw_docu_list').where(`rec_id=${this.mod.recID}`).find();
+        //删除后需要变动库存数量等
+        //await this.query(`call p_docu_rec_qty_from_calc ('${this.docuType.modulename}',${this.mod.recID},1);`);
+
+        //重新计算库存
+        //await this.query(`call p_stock_goods_qty_calc (${rec.c_goods},${rec.c_stock},${this.mod.user.groupID});`);
+        console.log("---------------pagedelete-------------");
+        console.log(this.mod.recID);
+        await this.model('t_docu_rec').where(` c_id=${this.mod.recID}`).delete();
+        return {
+            statusCode: 200,
+            message: '删除成功！',
+            data: {}
+        };
+    }
+
+    /**
+     * 编辑页面保存,<br/>
+     * 根据各种单据类型，增加对保存项的逻辑验证
+     * @method  pageSave
+     * @return {object} 如果有验证错误，则返回格式： {statusCode:300, message:'xxxxxx'}
+     * @param  {object} parms 前端传入的FORM参数
+     */
+    async pageSave(parms) {
+        console.log("----------------parms-----------------");
+        console.log(parms);
+        //parms = pageSavePretreat(parms);
+        var c_stock_qty = await cmpage.service('docu/docu_rec_stock').getStockByID(parms.c_goods,parms.c_docu);
+        console.log("--------------c_stock_qty--------------");
+        console.log(parms.c_goods);
+        console.log(parms.c_docu);
+        
+        console.log(c_stock_qty);
+        if (parms.c_qty > c_stock_qty) {
+            return {
+                statusCode: 300,
+                message: `数量不能大于库存数量，库存数: ${c_stock_qty}`
+            };
+        }
+        // parms.c_amt = parms.c_qty * parms.c_price;
+        // parms.c_amt_tax = parms.c_qty * parms.c_price_tax;
+
+        if (parms.c_price_out_tax <= 0) {
+            return {
+                statusCode: 300,
+                message: '含税价格应大于 0 '
+            };
+        }
+        parms.c_price_out = parms.c_price_out_tax * (1 - parms.c_tax / 100);
+        // parms.c_amt_out = parms.c_qty * parms.c_price_out;
+        // parms.c_amt_out_tax = parms.c_qty * parms.c_price_out_tax;
+        console.log(parms);
+        return await super.pageSave(parms);
+    }
+
+}

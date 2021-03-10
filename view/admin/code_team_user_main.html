@@ -1,0 +1,31 @@
+
+
+<div class="bjui-pageContent" style="padding:5px">
+
+    <div style="float:left; display:block; overflow:auto; width:240px; height:100%; border:solid 1px #CCC; line-height:21px; background:#fff">
+        <ul id="teamTree" class="ztree" data-toggle="ztree"
+            data-options="{
+                onClick: 'team_onClick'
+            }"
+        >
+            <% treeList.forEach(function(item)  { %>
+            <li data-id="<%= item.id%>" data-pid="<%= item.c_pid%>" data-root="<%= item.c_root%>"
+                data-open="<%= (item.c_pid == 0) %>" ><%= item.c_name%></li>
+            <%});%>
+        </ul>
+    </div>
+
+    <div id="teamUserList"  style="margin-left:246px;height:100%;">
+        <!--#include virtual="codeList" -->
+    </div>
+
+
+</div>
+
+<SCRIPT type="text/javascript">
+    function team_onClick(event, treeId, treeNode){
+        //event.preventDefault();
+        $(this).bjuiajax('doLoad', {target:$("#teamUserList"), url:"/cmpage/page/list?modulename=TeamUser&moduleOpen=div&c_team="+treeNode.id })
+
+    }
+</SCRIPT>

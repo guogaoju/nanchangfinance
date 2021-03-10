@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>南昌供应链金融系统3.0+ 系统登录</title>
+    <meta name="renderer" content="webkit">
+<script src="/static/bjui/js/jquery-1.11.3.min.js"></script>
+<script src="/static/bjui/js/jquery.cookie.js"></script>
+<link href="/static/bjui/themes/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+    html, body { height: 100%; overflow: hidden; }
+    body {
+        font-family: "Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+        background:#265e77 !important;
+        background-size: cover;
+    }
+    .form-control{height:37px;}
+    .main_box{position:absolute; top:45%; left:50%; margin:-200px 0 0 -180px; padding:15px 20px; width:360px; height:400px; min-width:320px; background:#FAFAFA; background:rgba(255,255,255,0.7); box-shadow: 1px 5px 8px #888888; border-radius:6px;}
+    .login_msg{height:30px;}
+    .input-group >.input-group-addon.code{padding:0;}
+    #captcha_img{cursor:pointer;}
+    .main_box .logo img{height:35px;margin-top: 10px;}
+    @media (min-width: 768px) {
+        .main_box {margin-left:-240px; padding:15px 55px; width:480px;}
+        .main_box .logo img{height:40px;}
+    }
+    .footer{
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</head>
+<body onload="createCode()">
+<!--[if lte IE 7]>
+<style type="text/css">
+#errorie {position: fixed; top: 0; z-index: 100000; height: 30px; background: #FCF8E3;}
+#errorie div {width: 900px; margin: 0 auto; line-height: 30px; color: orange; font-size: 14px; text-align: center;}
+#errorie div a {color: #459f79;font-size: 14px;}
+#errorie div a:hover {text-decoration: underline;}
+</style>
+<div id="errorie"><div>您的IE版本太旧了，请升级您的浏览器到 IE8以上版本 <a target="_blank" href="http://windows.microsoft.com/zh-cn/internet-explorer/ie-8-worldwide-languages">点击升级</a>&nbsp;&nbsp;强烈建议您更改换浏览器：<a href="http://down.tech.sina.com.cn/content/40975.html" target="_blank">谷歌 Chrome</a></div></div>
+<![endif]-->
+    <!--<div class="appurl"><img alt="Andriod APP下载" src="/static/mob/cmpage_demo.png" width="180px" height="180px" /></div>-->
+    <!--</br></br></br>-->
+    <!--<div ><img alt="IOS APP下载" src="/Mob/download/erp_ios.png" width="260px" height="260px" /></div>-->
+<div class="container">
+<div class="main_box">
+    <form action="/admin/index/login" id="login_form" method="post">
+       <p class="text-center logo" style="height:45px;line-height:45px;font-size:20px;font-weight:bold"><strong>南 昌 县 供 应 链 金 融 管 理 平 台</strong></p>
+        <div class="form-group" style="margin-top:30px;">
+            <div class="input-group">
+                <span class="input-group-addon" ><span class="glyphicon glyphicon-user"></span></span>
+                <input type="text" class="form-control" id="loginName" name="loginName" value="<%= vb.loginName%>" placeholder="登录名" aria-describedby="sizing-addon-user">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" ><span class="glyphicon glyphicon-lock"></span></span>
+                <input type="password" class="form-control" id="loginPwd" name="loginPwd" value="<%= vb.loginPwd%>" placeholder="登录密码" aria-describedby="sizing-addon-password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon" ><span class="glyphicon glyphicon-exclamation-sign"></span></span>
+                <input type="text" class="form-control"  id="inputCode" name="inputCode" placeholder="验证码" aria-describedby="sizing-addon-password">
+                <span class="input-group-addon code"  >&nbsp;&nbsp; <input type="text" onclick="createCode()" readonly="readonly" id="checkCode"  style="width: 80px;border:0;"  /></span>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" id="login_ok" onclick="return loginCheckForm();"  class="btn btn-primary btn-lg">&nbsp;登&nbsp;录&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn btn-default btn-lg">&nbsp;重&nbsp;置&nbsp;</button>
+        </div>
+        <div class="text-center">
+            <hr>
+            欢迎您，遇到问题请联系：<a href="#"><%= vb.msg%></a>
+        </div>
+        <input id="clientWidth" name="clientWidth" type="hidden" value="1200">
+    </form>
+
+</div>
+</div>
+<div class="footer" style="width:100%;background-color:#bcd4d7;position:fixed;bottom:0;height: 60px;">
+    <p style="height:60px;line-height:60px;font-size: 20px;font-weight: bold;"><span style="display:block;width: 45%;float: left;text-align: right">主办单位: 南 昌 县 城 市 投 资 发 展 有 限 公 司</span><span style="display:block;width: 45%;float: right;text-align: left">技术支持: 清 华 大 学 供 应 链 金 融</span></p>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    choose_bg();
+    var code ; //在全局 定义验证码
+    var fontsize = $.cookie('bjui_font') || 'bjui-font-d';
+    $.cookie('bjui_font',fontsize);
+
+    function createCode(){
+        code = "";
+        var codeLength = 4;//验证码的长度
+        var checkCode = document.getElementById("checkCode");
+        var selectChar = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');//所有候选组成验证码的字符，当然也可以用中文的
+        for(var i=0;i<codeLength;i++)
+        {
+            var charIndex = Math.floor(Math.random()*36);
+            code +=selectChar[charIndex];
+        }
+        if(checkCode)
+        {
+            checkCode.className="code";
+            checkCode.value = code;
+        }
+    }
+
+    function loginCheckForm() {
+        if ($("#LoginName").val() == "") {
+            $("#loginMsg").html("请输入用户名");
+            $("#LoginName").focus();
+            return false;
+        }
+        if ($("#LoginPwd").val() == "") {
+            $("#loginMsg").html("请输入密码");
+            $("#LoginPwd").focus();
+            return false;
+        }
+        $("#clientWidth").val(document.documentElement.clientWidth);
+        //正式使用时去掉下面的注释
+       var inputCode = document.getElementById("inputCode").value;
+       if(inputCode.length <=0)
+       {
+           alert("请输入验证码！");
+           return false;
+       }
+       else if(inputCode != code )
+       {
+           alert("验证码输入错误！");
+           createCode();//刷新验证码
+       }
+
+        return true;
+    }
+
+    function choose_bg() {
+        //var bg = Math.floor(Math.random() * 9 + 1);
+        //$('body').css('background-image', 'url(/static/images/bg7.jpg');
+        $('body').css('background', '#1E5B94');
+    }
+
+</script>

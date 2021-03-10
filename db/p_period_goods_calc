@@ -1,0 +1,58 @@
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_period_goods_calc`(IN period_id int, in stock_id int)
+BEGIN
+    #按期次仓库的库存结转
+    declare last_period_id  int;
+    declare time_begin  timestamp;
+    declare time_end    timestamp;  
+    select max(c_id) into last_period_id  from t_period where c_stock=stock_id and c_status=1;
+    select c_time_begin,c_time_end into time_begin,time_end from t_period where c_id = period_id;
+    #删除当前期次的结转数据
+    delete from t_period_goods where c_period= period_id;
+    #加入当前所有物料
+    insert t_period_goods(c_period,c_stock,c_goods, c_begin,c_begin_qty,c_begin_price,c_end,c_end_qty,c_end_price,c_in,c_in_qty,c_in_price,c_out,c_out_qty,c_out_price,c_memo)
+        select period_id,stock_id, c_id, 0,0,0, 0,0,0, 0,0,0, 0,0,0, ''
+        from t_goods where c_type=0 and c_status =0;
+    
+    #取上次该仓库的期次结转数据
+    update t_period_goods A inner join t_period_goods B
+        on A.c_stock=B.c_stock 
+            and A.c_goods=B.c_goods
+        set A.c_begin =B.c_end, A.c_begin_price=ifnull(B.c_end_price,0), A.c_begin_qty = ifnull(B.c_end_qty,0)
+        where A.c_period= period_id;
+
+    
+    #统计物料的出入库数量
+    CREATE TEMPORARY TABLE tmp_goods
+    select c_goods, sum(case when (A.c_type in(4) and A.c_stock=stock_id ) then c_qty else 0 end) as qtyIn,
+            sum(case when (A.c_type in(5) and A.c_stock=stock_id)  then c_qty else 0 end) as qtyOut
+        from  t_docu A, t_docu_rec B 
+        where A.c_id=B.c_docu and (A.c_stock=stock_id or A.c_stock_to=stock_id)  and A.c_status=1213
+            and A.c_time > time_begin and A.c_time <time_end
+        group by c_goods;
+    update t_period_goods inner join tmp_goods B
+    on t_period_goods.c_goods=B.c_goods
+        set c_in_qty=B.qtyIn,c_out_qty=B.qtyOut
+        where c_period= period_id;
+    update t_period_goods set c_begin_price=0 where c_begin_price is null and c_period= period_id;
+    update t_period_goods set c_end_qty= c_begin_qty +c_in_qty -c_out_qty,c_end_price=c_begin_price,c_end= (c_begin_qty +c_in_qty -c_out_qty)*c_begin_price,
+            c_end_qty_calc= c_begin_qty +c_in_qty -c_out_qty
+        where c_period= period_id;
+    #删除数量全为0的记录
+    delete from t_period_goods where c_period= period_id and c_end_qty=0 and c_in_qty=0 and c_out_qty=0 and c_begin_qty=0
+        and c_end=0 and c_in=0 and c_out=0 and c_begin=0;   
+    
+    #取物料的最新价格
+    -- update t_period_goods inner join t_price_stock B
+    -- on t_period_goods.c_goods=B.c_goods 
+    --     set c_price=B.c_price
+    --     where  B.c_stock= stock_id and t_period_goods.c_period= period_id;
+
+    drop table tmp_goods;
+    select period_id as period_id;
+
+    #需要重新计算进价，加权平均法
+
+
+END;;
+DELIMITER ;

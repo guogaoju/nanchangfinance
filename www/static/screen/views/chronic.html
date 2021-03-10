@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化demo</title>
+    <link href="../styles/common.css" rel="stylesheet">
+    <link href="../styles/bootstrap.min.css" rel="stylesheet">
+    <link href="../styles/bootstrap-table.css" rel="stylesheet">
+    <link href="../styles/pagination.css" rel="stylesheet">
+    <script src="../scripts/Plugin/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/Plugin/echarts.min.js"></script>
+    <script src="../scripts/Plugin/jquery.pagination.min.js"></script>
+    <script src="../scripts/common.js"></script>
+    <script src="../scripts/chronic.js"></script>
+</head>
+<body>
+<!--顶部-->
+<header class="header left">
+    <div class="left nav" style="margin-left:10px;">
+        <ul>
+            <li><a id="a0" href="index.html">数据概况</a> </li>
+            <li><a id="a1" href="quota.html">指标分析</a> </li>
+            <li><a id="a2" href="trend.html">趋势分析</a> </li>
+            <li class="nav_active"><a id="a3" href="chronic.html">最新采购列表</a> </li>
+        </ul>
+    </div>
+    <div class="header_center left" style="position:relative;">
+  
+        <h1 style="margin-top:10px;"><strong>南昌县供应链金融项目</strong></h1>
+
+    </div>
+    <div class="right text_right">
+      <!-- <img src="../images/logo.png" style="height:60px;margin-top:10px;margin-right:40px;"> -->
+    </div>
+</header>
+<!--内容部分-->
+<div class="con left" style="width: 98%;margin-left: 1%;margin-bottom: 25px;">
+
+<!--     <input type="text" placeholder="请输入姓名身份证" style="width: 180px;height: 28px;border-radius: 3px;text-indent: 1em;border: 1px solid#4b8df8;color: #fff;" /><button class="btn btn-primary btn-sm" style="margin-left:20px"><span class="glyphicon glyphicon-search"></span>查询</button>
+ -->
+    <div class="div_any_child">
+          <div class="table_p" style="height: 96%;margin-top: 20px;">
+              <table>
+                  <thead><tr style="font-size:16px;">
+                      <th>序号</th>
+                      <th>公司</th>
+                      <th>货品</th>
+                      <th>库房</th>
+                      <th>数量</th>
+                      <th>日期</th>
+                  </tr>
+                  </thead>
+                  <tbody style="font-size:16px;">
+                    <tr><td>1</td><td>南昌鑫源混凝土搅拌有限公司</td><td>商品砼</td><td>桃新大道三标段</td><td>509立方米</td><td>2020-03-31</td></tr>
+                    <tr><td>2</td><td>南昌鑫源混凝土搅拌有限公司</td><td>商品砼</td><td>桃新大道三标段</td><td>448立方米</td><td>2020-01-20</td></tr>
+                    <tr><td>3</td><td>南昌鑫源混凝土搅拌有限公司</td><td>商品砼</td><td>桃新大道三标段</td><td>2998立方米</td><td>2020-01-11</td></tr>
+                    <tr><td>4</td><td>南昌鑫源混凝土搅拌有限公司</td><td>商品砼</td><td>桃新大道三标段</td><td>2206立方米</td><td>2019-12-31</td></tr>
+                    <tr><td>5</td><td>南昌鑫源混凝土搅拌有限公司</td><td>混凝土</td><td>桃新大道三标段</td><td>8526立方米</td><td>2019-12-23</td></tr>
+                    <tr><td>6</td><td>江西斯蒂尔贸易有限公司</td><td>螺纹钢</td><td>桃新大道三标段</td><td>220.695吨</td><td>2020-04-06</td></tr>
+                    <tr><td>7</td><td>江西斯蒂尔贸易有限公司</td><td>钢筋</td><td>桃新大道三标段</td><td>359.460吨</td><td>2020-03-31</td></tr>
+                    <tr><td>8</td><td>江西斯蒂尔贸易有限公司</td><td>螺纹钢</td><td>桃新大道三标段</td><td>332.382吨</td><td>2020-01-04</td></tr>
+                    <tr><td>9</td><td>江西斯蒂尔贸易有限公司</td><td>高线</td><td>桃新大道三标段</td><td>30.307吨</td><td>2020-01-04</td></tr>
+                    <tr><td>10</td><td>江西斯蒂尔贸易有限公司</td><td>高线</td><td>桃新大道三标段</td><td>20.401吨</td><td>2019-12-21</td></tr>
+                    <tr><td>11</td><td>江西斯蒂尔贸易有限公司</td><td>螺纹钢</td><td>桃新大道三标段</td><td>1362.996吨</td><td>2019-12-21</td></tr>
+                   
+                  </tbody>
+              </table>
+          </div>
+          <!-- <div class="box">
+              <div id="pagination" class="page fl"></div>
+          </div> -->
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

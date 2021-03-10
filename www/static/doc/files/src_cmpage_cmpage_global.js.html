@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src\cmpage\cmpage_global.js</title>
+  
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-smart">
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               <a class="navbar-brand mainlogo" href="/static/doc/index.html">
+             
+            <img alt="" src="../assets/css/logo.png" title="">
+            
+                
+          </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                 <ul class="nav navbar-nav">
+                    
+                    <li><a href="/home/index/index">首页</a>
+                    </li>
+                    
+                    <li><a href="/static/doc/index.html">文档</a>
+                    </li>
+                    
+                    <li><a href="/admin/index/index">演示</a>
+                    </li>
+                    
+                    <li><a href="/home/index/log">日志</a>
+                    </li>
+                    
+                </ul>
+               <div class="navbar-form navbar-right filterAPi" autocomplete="off">
+                <input type="text" id='txtSearchAPI' class="form-control search-query" placeholder="Search for API" />
+                 <ul id="filterList" class="filterItems dropdown-menu" role="menu"></ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="sidebar">
+    <h3>Modules/Classes</h3>
+        <div id="api-tabview-filter">
+            <input id='txtSearch' type="search" class="form-control" placeholder="Type to filter Modules/Classes">
+        </div>
+        <dl id="sidebar_list">
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/admin.controller.html">admin.controller</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/admin.controller.base.html">admin.controller.base</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.controller.code.html">admin.controller.code</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.controller.index.html">admin.controller.index</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.controller.mob.html">admin.controller.mob</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/admin.service.html">admin.service</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/admin.service.code.html">admin.service.code</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.code_list.html">admin.service.code_list</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.code_lookup.html">admin.service.code_lookup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.groupuser.html">admin.service.groupuser</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.groupuser_add.html">admin.service.groupuser_add</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.log.html">admin.service.log</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.login.html">admin.service.login</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.privilege.html">admin.service.privilege</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.teamuser.html">admin.service.teamuser</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.teamuser_add.html">admin.service.teamuser_add</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/admin.service.user.html">admin.service.user</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/cmpage.controller.html">cmpage.controller</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/cmpage.controller.base.html">cmpage.controller.base</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.controller.mob.html">cmpage.controller.mob</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.controller.module.html">cmpage.controller.module</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.controller.page.html">cmpage.controller.page</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.controller.utils.html">cmpage.controller.utils</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/cmpage.logic.html">cmpage.logic</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/cmpage.logic.page.html">cmpage.logic.page</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/cmpage.service.html">cmpage.service</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.area.html">cmpage.service.area</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.base.html">cmpage.service.base</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.file_list.html">cmpage.service.file_list</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.page.html">cmpage.service.page</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.page_excel.html">cmpage.service.page_excel</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.page_lookup.html">cmpage.service.page_lookup</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.page_mob.html">cmpage.service.page_mob</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.utils.html">cmpage.service.utils</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.cmpage_global.html">cmpage.cmpage_global</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.cmpage_global_flow.html">cmpage.cmpage_global_flow</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/demo.model.html">demo.model</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/flow.model.proc_assign.html">flow.model.proc_assign</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/cmpage.service.appr.html">cmpage.service.appr</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.model.proc.html">flow.model.proc</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.model.task.html">flow.model.task</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.model.task_act.html">flow.model.task_act</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.model.task_act_appr.html">flow.model.task_act_appr</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/flow.controller.html">flow.controller</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/flow.controller.act.html">flow.controller.act</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.controller.base.html">flow.controller.base</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.controller.proc.html">flow.controller.proc</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.controller.task.html">flow.controller.task</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.controller.task_act.html">flow.controller.task_act</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+                <dt>
+                    <span class="glyphicon glyphicon-minus"></span>
+                    <a href="../modules/flow.model.html">flow.model</a>
+                </dt>
+                <dd>
+                    <ul>
+                   
+                       <li>
+                            
+                           <a href="../classes/flow.model.act.html">flow.model.act</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                       <li>
+                            
+                           <a href="../classes/flow.model.act_path.html">flow.model.act_path</a>
+                           <ul>
+                                
+                           </ul>
+                       </li>
+                    
+                    </ul>
+                </dd>
+             
+        </dl>
+</div>
+   
+    <div class="stdoc-content">
+        <!--     <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+ -->
+        <div class="apidocs">
+            <div id="docs-main">
+                <div class="content">
+                    <div class="page-header">
+    <h1>src\cmpage\cmpage_global.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums" id='src_code'>
+&#x27;use strict&#x27;;
+
+/**
+ @module cmpage.service
+ */
+
+/**
+ * cmpage的全局方法和变量设置，置入（Object.assign）thinkjs 的 global 中
+ * @class cmpage.cmpage_global
+ */
+
+import moment from &#x27;moment&#x27;;
+
+export default class extends think.base {
+
+
+    /***************************对象处理 **************************************/
+    //取对象的所有属性描述
+    getOwnPropertyDescriptors = function(obj) {
+        let result = {};
+        for (let key of Reflect.ownKeys(obj)) {
+            result[key] = Object.getOwnPropertyDescriptor(obj, key);
+        }
+        return result;
+    };
+
+    /**
+     * 对象转换成字符串，其中的属性不带双引号，字符串和时间类型带单引号，其余默认转换，可以用 eval 转成对象&lt;br/&gt;
+     * 一般用于 某数据表记录的字段替换 事先设置的子字符串，子字符串的格式如：#id#
+     * @method  objPropertysReplaceToStr
+     * @return  {string}  替换后的字符串
+     * @param   {string} str 源字符串
+     * @param   {object} obj 源对象
+     */
+    objPropertysReplaceToStr = function(str, obj){
+        if(think.isEmpty(str) || think.isEmpty(obj))  return str;
+
+        let ret = [];
+        let arr = str.split(&#x27;&#x27;);
+        let key =&#x27;&#x27;;
+        let isKey = false;
+        for(let s of arr){
+            if(isKey){
+                if(s === &#x27;#&#x27;){  //key 结束，替换值加入ret
+                    isKey = false;
+                    if(think.isEmpty(key)){
+                        ret.push(&#x27;#&#x27;);
+                    }else{
+                        ret.push(obj.hasOwnProperty(key) ? obj[key] : &#x27;#&#x27;+key+&#x27;#&#x27;);
+                    }
+                }else{
+                    key += s;
+                }
+            }else{
+                if(s === &#x27;#&#x27;){
+                    isKey = true;
+                    key =&#x27;&#x27;;
+                }else {
+                    ret.push(s);
+                }
+            }
+        }
+        return ret.join(&#x27;&#x27;);
+    };
+    /**
+     * 在目标对象上增加另一个对象的某些属性，如有重叠，则覆盖其值
+     * @method  objPropertysFromOtherObj
+     * @return  {object}  新的对象，其属性集是源对象的子集
+     * @param   {object} toObj 目标对象
+     * @param   {object} fromObj 源对象
+     * @param   {Array} arrProps 需要COPY的熟悉数组
+     */
+    objPropertysFromOtherObj = function(toObj, fromObj, arrProps){
+        let ret = {};
+        Object.assign(ret,toObj);
+        let arr = think.isString(arrProps) ? arrProps.split(&#x27;,&#x27;) : arrProps;
+        for(let key of arr){
+            ret[key] = fromObj[key];
+        }
+        return ret;
+    };
+    /**
+     * 对象转换成字符串，其中的属性不带双引号，字符串和时间类型带单引号，其余默认转换，可以用 eval 转成对象&lt;br/&gt;
+     * 一般用 cmpage.objFromString(str) 进行转换
+     * @method  objToString
+     * @return  {string}  序列化后的字符串
+     * @param   {object} obj 源对象
+     */
+    objToString = function(obj){
+        let ret = [];
+        if(think.isObject(obj)) {
+            for (let key in obj) {
+                if (think.isDate(obj[key])) {
+                    ret.push(&#x60;${key}:&#x27;${think.datetime(obj[key])}&#x27;&#x60;);
+                } else if (think.isString(obj[key])) {
+                    ret.push(&#x60;${key}:&#x27;${obj[key]}&#x27;&#x60;);
+                } else if (think.isObject(obj[key])) {
+                    ret.push(&#x60;${key}:${ this.objToString(obj[key]) }&#x60;);
+                } else if (think.isArray(obj[key])) {
+                    let tmp = [];
+                    for (let item of obj[key]) {
+                        tmp.push(this.objToString(item));
+                    }
+                    ret.push(&#x60;${key}:[${tmp.join(&#x27;,&#x27;)}]&#x60;);
+                } else {
+                    ret.push(&#x60;${key}:${obj[key]}&#x60;);
+                }
+            }
+            return &quot;{&quot; + ret.join(&#x27;, &#x27;) + &quot;}&quot;;
+        }else if(think.isArray(obj)){
+            let tmp = [];
+            for (let item of obj) {
+                tmp.push(this.objToString(item));
+            }
+            return &#x60;[${tmp.join(&#x27;,&#x27;)}]&#x60;;
+        }else{
+            return String(obj);
+        }
+    };
+
+    /**
+     * 把字符串转换成对象，一般该字符串是从 cmpage.objToString(obj) 转换而来 &lt;br/&gt;
+     * @method  objFromString
+     * @return   {object}  目标对象
+     * @param  {string}  str 序列化后的字符串
+     */
+    objFromString = function(str){
+        //this.debug(str,&#x27;cmpage_global.objFromString - str&#x27;);
+        if(think.isEmpty(str) || str.indexOf(&#x27;{&#x27;) !== 0)    return {};
+        return eval(&quot;(&quot;+ str +&quot;)&quot;);
+    };
+
+    /**
+     * 把字符串转换成数组对象，其元素是对象，一般该元素是从 cmpage.objToString(obj) 转换而来 &lt;br/&gt;
+     * @method  arrFromString
+     * @return   {Array}  JSON对象数组
+     * @param  {string}  str 序列化后的字符串
+     */
+    arrFromString = function(str){
+        let arr = [];
+        let obj = think.isEmpty(str) ? {} : cmpage.objFromString(str);
+        if(think.isArray(obj)){
+            for(let item of obj){
+                if(!think.isEmpty(item)){    arr.push(item);  }
+            }
+        }else{
+            if(!think.isEmpty(obj)){    arr.push(obj);  }
+        }
+        return arr;
+    };
+    /**
+     * 从对象数组中查找符合匹配条件的元素，组成新的数组返回 &lt;br/&gt;
+     × 一般用于从记录表中按条件删选出子表
+     * @method  arrFromString
+     * @return   {Array}  JSON对象数组
+     * @param   {Array}  来源数组
+     * @param  {object}  where 条件对象
+     */
+    subArray = function(arr,where){
+        if(think.isEmpty(where) || !think.isObject(where))  return arr;
+        let ret = [];
+        for(let a of arr){
+            let isSame = true;
+            for(let p in where){
+                if(where[p] != a[p]){
+                    isSame = false;
+                    break;
+                }
+            }
+            if(isSame){ ret.push(a);    }
+        }
+        return ret;
+    };
+
+    /**
+     * 从一个对象数组中取某一列（属性）值组成的数组，一般用于处理select返回的结果集
+     * @method  arrGetValuesByColumnName
+     * @return  {Array}  新的数组，由源数组元素的某个属性值组成
+     * @param   {Array} arr 对象数组
+     * @param   {object} fromObj 源对象
+     * @param   {string} columnName 属性名称
+     */
+    arrGetValuesByColumnName = function(arr,columnName){
+        let ret = [];
+        for(let obj of arr){
+            ret.push(obj[columnName]);
+        }
+        return ret;
+    };
+
+    /**
+     * 从一个对象中取某些属性值组成的字符串，一般用于连接某条记录的某些值
+     * @method  strGetValuesByPropertyName
+     * @return  {string}  新的字符串，由指定的属性值组成
+     * @param   {object} obj 源对象
+     * @param   {object} fromObj 源对象
+     * @param   {string} propertyNames 属性名称,逗号分隔
+     * @param   {string} joinStr 连接的字符串
+     */
+    strGetValuesByPropertyName = function(obj,propertyNames,joinStr){
+        //debug(propertyNames);
+        let ret = [];
+        joinStr = joinStr || &#x27;&#x27;;
+        for(let p of propertyNames.split(&#x27;,&#x27;)){
+            ret.push(obj[p]);
+        }
+        return ret.join(joinStr);
+    };
+
+    /**
+     * 去除数组中的重复值
+     * @method  arrGetUnique
+     * @return  {Array}  新的数组
+     * @param   {Array} arr 源数组
+     */
+    arrGetUnique = function(arr){
+        var n = {},ret=[]; //n为hash表
+        for(var i = 0; i &lt; arr.length; i++) //遍历当前数组
+        {
+            if (!n[arr[i]]) //如果hash表中没有当前项
+            {
+                n[arr[i]] = true; //存入hash表
+                ret.push(arr[i]); //把当前数组的当前项push到临时数组里面
+            }
+        }
+        return ret;
+    };
+
+    /**
+     * 进行CRUD之前转换成合适的值，用来匹配 thinkjs 的CRUD方法
+     * @method  checksql
+     * @return  {object}  新的对象，其属性已做SQL特性匹配
+     * @param   {object} fromObj 记录对象
+     */
+    checksql = (obj) =&gt;{
+        for (let key of Reflect.ownKeys(obj)) {
+            let val =obj[key];
+            if(think.isBoolean(val) &amp;&amp; think.config(&quot;db.type&quot;)===&#x27;mysql&#x27;){
+                obj[key] = val ? 1: 0;
+            }
+        }
+        return obj;
+    };
+
+    /***************************其他的全局方法 **************************************/
+    debug = (msg,desc)=&gt;{
+        if(think.env === &#x27;development&#x27;){
+            //let message = think.isObject(msg) ? JSON.stringify(msg).replace(/&quot;/g,&#x27;&#x27;).replace(/\\/g,&#x27;&#x27;).replace(/,/g,&#x27;,  &#x27;) : msg;
+            let message = this.objToString(msg);
+            //think.log(message,(think.isEmpty(desc) ? &#x27;[CMPAGE] &#x27;:&#x27;[&#x27;+desc+&#x27;] &#x27;),false);
+            think.log(function(colors){
+                return colors.yellow(think.isEmpty(desc) ? &#x27;[CMPAGE] &#x27;:&#x27;[&#x27;+desc+&#x27;] &#x27;) + message;
+            });
+        }
+    };
+    /**
+     * 从URL字符串中解析出参数对象
+     * @method  parmsFromUrl
+     * @return  {object}  url参数对象
+     * @param   {string} url URL字符串
+     */
+    parmsFromUrl = (url)=&gt;{
+        if(think.isEmpty(url))  return {};
+        //this.debug(url,&#x27;cmpage.parmsFromUrl - url&#x27;);
+        let parms = url.split(&#x27;?&#x27;)[1].split(&#x27;&amp;&#x27;);
+        let ret = {};
+        for(let parm of parms){
+            let p = parm.split(&#x27;=&#x27;);
+            ret[p[0]] = String(think.isEmpty(p[1]) ? &#x27;&#x27;:p[1]);
+        }
+        return ret;
+    };
+    error = (msg,data) =&gt;{
+        //TODO: 可以考虑增加统一的错误处理逻辑
+        let ret ={statusCode:300, message:msg, data:data};
+        this.debug(ret,&#x27;ERROR&#x27;);
+        return ret;
+    };
+    /**
+     * 通过形如：demo/customer 参数返回model，数据库配置采用model所在模块的配置
+     * @method  model
+     * @return  {object}  thinkjs.model 对象
+     * @param   {string} path 业务模块的实现类设置
+     * @param   {string} defaultPath 业务模块默认的实现类
+     */
+    model = (path, defaultPath) =&gt;{
+        defaultPath = think.isEmpty(defaultPath) ? &#x27;cmpage/page&#x27;:defaultPath;
+        path = think.isEmpty(path) ? defaultPath : path;
+        //console.log(path);
+        let ps = path.split(&#x27;/&#x27;);
+        if(ps.length &gt;1){
+            let config =think.config(&#x27;db&#x27;,undefined,ps[0]);
+            if(think.isEmpty(config)){
+                config =think.config(&#x27;db&#x27;,undefined,&#x27;common&#x27;);
+            }
+            return think.model(ps[1],config, ps[0]);
+        }else{
+            return think.model(path);
+        }
+    };
+
+    /**
+     * 时间格式化输出
+     * @method  model
+     * @return  {string}  格式化输出
+     * @param   {object} date 需要格式化的日期对象
+     * @param   {string} format 格式： 如： yyyy-MM-dd HH:mm:ss
+     */
+    datetime = (date,format) =&gt; {
+        if(think.isEmpty(format)){
+            format = &#x27;YYYY-MM-DD&#x27;;
+        }
+        if(think.isEmpty(date)){
+            return moment().format(format.replace(/yyyy-MM-dd/,&#x27;YYYY-MM-DD&#x27;).trim());
+        }else{
+            return moment(date).format(format.replace(/yyyy-MM-dd/,&#x27;YYYY-MM-DD&#x27;).trim());
+        }
+    };
+
+    /**
+     * cmpage的全局变量初始化，如enum等
+     * 值&gt;0 ,是为了和数据库中其他的参数值设置方式保持一致
+     */
+    enumStatusExecute = {
+        SUCCESS:1, SUCCESS_name:&#x27;执行成功&#x27;,
+        FAIL:2, FAIL_name:&#x27;执行失败&#x27;,
+        ERROR:3, ERROR_name:&#x27;执行错误&#x27;
+    };
+
+    enumLogType = {
+        ADD:1, ADD_name:&#x27;新增&#x27;,
+        UPDATE:2, UPDATE_name:&#x27;修改&#x27;
+    };
+
+    ui = {
+        enumListColumns : {     //其值表示页面列表的显示字段的数量
+            MAX:100, MIDDLE:5, SMALL: 5, MOBILE: 3
+        },
+        enumListBtns : {     //其值表示页面列表的行按钮的数量
+            MAX:100, MIDDLE:2, SMALL: 2, MOBILE: 1
+        },
+        enumQueryColumns : {     //其值表示页面列表的行按钮的数量
+            MAX:5, MIDDLE:2, SMALL: 2, MOBILE: 1
+        }
+
+    };
+
+    /************************************数字值的格式化输出 **************************************/
+    _format = function(pattern,num,z){
+        let j = pattern.length &gt;= num.length ? pattern.length : num.length ;
+        let p = pattern.split(&quot;&quot;);
+        let n = num.split(&quot;&quot;);
+        let bool = true,nn =&quot;&quot;;
+        for(let i=0;i&lt;j;i++){
+            let x = n[n.length-j+i];
+            let y = p[p.length-j+i];
+            if( z == 0){
+                if(bool){
+                    if( ( x &amp;&amp; y &amp;&amp; (x !=&quot;0&quot;|| y ==&quot;0&quot;)) || ( x &amp;&amp; x !=&quot;0&quot;&amp;&amp; !y ) || ( y &amp;&amp; y ==&quot;0&quot;&amp;&amp; !x ) ){
+                        nn += x ? x :&quot;0&quot;;
+                        bool = false;
+                    }
+                } else {
+                    nn += x ? x :&quot;0&quot;;
+                }
+            } else {
+                if( y &amp;&amp; ( y ==&quot;0&quot;|| ( y ==&quot;#&quot;&amp;&amp; x ) ))
+                    nn += x ? x :&quot;0&quot;;
+            }
+        }
+        return nn;
+    };
+    _formatNumber = function(numChar,pattern){
+        let patterns = pattern.split(&quot;.&quot;);
+        let numChars = numChar.split(&quot;.&quot;);
+        let z = patterns[0].indexOf(&quot;,&quot;) == -1 ? -1 : patterns[0].length - patterns[0].indexOf(&quot;,&quot;) ;
+        let num1 = this._format(patterns[0].replace(&quot;,&quot;),numChars[0],0);
+        let num2 = this._format(patterns[1]?patterns[1].split(&#x27;&#x27;).reverse().join(&#x27;&#x27;):&quot;&quot;, numChars[1]?numChars[1].split(&#x27;&#x27;).reverse().join(&#x27;&#x27;):&quot;&quot;,1);
+        num1 = num1.split(&quot;&quot;).reverse().join(&#x27;&#x27;);
+        let reCat = eval(&quot;/[0-9]{&quot;+ (z-1) +&quot;,&quot;+ (z-1) +&quot;}/gi&quot;);
+        let arrdata = z &gt; -1 ? num1.match(reCat) : undefined ;
+        if( arrdata &amp;&amp; arrdata.length &gt; 0 ){
+            let w = num1.replace(arrdata.join(&#x27;&#x27;),&#x27;&#x27;);
+            num1 = arrdata.join(&#x27;,&#x27;) + ( w ==&quot;&quot;?&quot;&quot;:&quot;,&quot;) + w ;
+        }
+        num1 = num1.split(&quot;&quot;).reverse().join(&quot;&quot;);
+        return (num1 ==&quot;&quot;?&quot;0&quot;: num1) + (num2 !=&quot;&quot;?&quot;.&quot;+ num2.split(&quot;&quot;).reverse().join(&#x27;&#x27;) :&quot;&quot;);
+    };
+
+    /**
+     * 有小数的格式化输出
+     * @method  formatNumber
+     * @return  {string}  格式化输出
+     * @param   {float} mum 需要格式化的数值
+     * @param   {object} opt 格式化配置对象，一般中业务模块的列设置中制定格式如： #####0.00
+     */
+    formatNumber = function(num,opt){
+        if(think.isEmpty(opt.pattern)){
+            return num.toString();
+        }
+        let reCat = /[0#,.]{1,}/gi;
+        let zeroExc = opt.zeroExc == undefined ? true : opt.zeroExc ;
+        let pattern = opt.pattern.match(reCat)[0];
+        let numChar = num.toString();
+        return !(zeroExc &amp;&amp; numChar == 0) ? opt.pattern.replace(pattern,this._formatNumber(numChar,pattern)) : opt.pattern.replace(pattern,&quot;0&quot;);
+    };
+
+    /**
+     * 取两个整数间的随机整数
+     * @method  getRandomNum
+     * @return  {int}  随机整数
+     * @param   {int} Min 最小整数
+     * @param   {int} Max 最大整数
+     */
+    getRandomNum = function(Min,Max)
+    {
+        if(Max &lt;= Min){
+            return Min;
+        }
+        var Range = Max - Min;
+        var Rand = Math.random();
+        return(Min + Math.round(Rand * Range));
+    };
+
+    /**
+     * 过滤敏感字符串
+     * @method
+     * @return  {string}  过滤后的字符串
+     * @param   {string} str 源字符串
+     */
+    filterSensitiveString = function(str)
+    {
+        let arr = [&#x27;select &#x27;,&#x27;update &#x27;,&#x27;delete &#x27;,&#x27;alter &#x27;,&#x27;drop &#x27;,&#x27;create &#x27;,&#x27;exec &#x27;,&#x27;execute &#x27;];
+        let ret = str;
+        for(let s of arr){
+            ret = ret.replace(s,&#x27;&#x27;);
+        }
+        return ret;
+    };
+
+    /**
+     * 根据文件名称判断文件是否是图片类型
+     * @method
+     * @return  {boolean}  是否图片文件
+     * @param   {string} filename 文件名称
+     */
+    isImageFile = function(filename)
+    {
+        let arr = [&#x27;jpg&#x27;,&#x27;png&#x27;,&#x27;jpeg&#x27;,&#x27;gif&#x27;,&#x27;bmp&#x27;];
+        let exts = filename.split(&#x27;.&#x27;);
+        if(exts.length &lt; 2)   return false;
+
+        let fileExt = exts[exts.length -1];
+        for(let s of arr){
+            if(s == fileExt)    return true;
+        }
+        return false;
+    };
+
+}
+
+    </pre>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<a id="gotoTop" class='well well-small' href='#'>
+    Top
+</a>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/doc.js"></script>
+</body>
+</html>

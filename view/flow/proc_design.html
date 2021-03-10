@@ -1,0 +1,217 @@
+
+<iframe id="mapiframe" name="mapiframe" width="70%" height="100%" frameborder="0" src="/flow/proc/flow_map?proc_id=<%= parms.editID%>"></iframe>
+
+<div style="float:right; display:block; overflow:hidden; width:30%; height:100%; border:solid 1px #CCC; line-height:21px; background:#fff" class="bjui-layout">
+
+    <div id="procEdit" style="display:block; overflow:auto; width:100%; height:100%;  border:solid 1px #CCC; line-height:21px; background:#fff">
+        <div class="bjui-pageHeader">
+            <label id="procHeader" data-height="30px" style="margin: 5px;">流程模板的主信息</label>
+        </div>
+            <div class="bjui-pageContent">
+                <form id="FwProcEditForm" style="display:block;margin-top:40px;" action="/cmpage/page/save" data-toggle="validate" data-alertmsg="true">
+                    <input id="FwProcID" name="id" type="hidden" value="<%= parms.editID%>" />
+                    <input name="modulename" type="hidden" value="FwProcList" />
+                    <input name="parmsUrl" type="hidden" value="<%= parms.parmsUrl%>" />
+                    <div class="bjui-row">
+                        <%- procEditHtml%>
+                    </div>
+                </form>
+                <form id="FwActEditForm" style="display:none;margin-top:40px;" action="/cmpage/page/save" data-toggle="validate" data-alertmsg="true">
+                    <input id="FwActID" name="id" type="text" readonly value="0" />
+                    <input name="modulename" type="hidden" value="FwAct" />
+                    <input name="parmsUrl" type="hidden" value="{}" />
+                    <div id="actEditTable" class="bjui-row">
+                        <%- actEditHtml%>
+                    </div>
+                </form>
+                <form id="FwActPathEditForm" style="display:none;margin-top:40px;" action="/cmpage/page/save" data-toggle="validate" data-alertmsg="true">
+                    <input id="FwActPathID" name="id" type="text" value="0" />
+                    <input name="modulename" type="hidden" value="FwActPath" />
+                    <input name="parmsUrl" type="hidden" value="{}" />
+                    <input id="FwActPathc_from" name="c_from" type="hidden" value="0" />
+                    <input id="FwActPathc_to" name="c_to" type="hidden" value="0" />
+                    <input id="FwActPathc_proc" name="c_proc" type="hidden" value="0" />
+                    <div class="bjui-row">
+                        <label class="row-label">路径名称：</label>
+                        <div class="row-input">
+                            <input id="FwActPathc_name" type="text" name="c_name"  size="22"  data-rule="required"/>
+                        </div>
+                        <label class="row-label">业务规则：</label>
+                        <div class="row-input">
+                            <textarea data-toggle="autoheight" cols="22" rows="1" id="FwActPathc_domain"  name="c_domain" ></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="bjui-pageFooter" >
+                <ul>
+                    <li style="float:left;"><button id="btnActAssign" style="display:none;" type="button" class="btn btn-green" data-icon="user" data-toggle="dialog"
+                                                    onclick="return actAssignList();">权限指派</button></li>
+                    <li style="float:left;"><button id="btnActDelete" style="display:none;" onclick="return actDeleteConfirm();" type="button" class="btn btn-red" data-icon="remove">删除节点</button></li>
+                    <li style="float:left;"><button id="btnActPathDelete" style="display:none;" onclick="return actPathDeleteConfirm();" type="button" class="btn btn-red" data-icon="remove">删除路径</button></li>
+                    <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+                    <li><button type="button" class="btn btn-green" onclick="return fwSaveForm();" data-icon="save">保存</button></li>
+                </ul>
+            </div>
+    </div>
+
+</div>
+
+<script>
+    var fwCurrentForm ='FwProc';
+    var fwCurrentRect = null;
+    var fwCurrentSrc = null;
+    function actAssignList(){
+        if(fwCurrentRect === null){ return false;}
+        BJUI.dialog({
+            id:'pageActAssignList',
+            url:'/cmpage/page/list?modulename=FwActAssign&c_act='+fwCurrentSrc.getDataId()+'&moduleOpen=dialog',
+            mask:true,
+            width:800,
+            height:550,
+            title:'['+ fwCurrentSrc.text() +']权限指派'
+        });
+        return false;
+    }
+
+    function actDeleteConfirm(){
+        if(fwCurrentRect === null){ return false;}
+        $(this).alertmsg("confirm", "是否确定要删除节点："+fwCurrentSrc.text()+", 并删除相关的路径信息？ ",{
+            okCall:function(){
+                //alert(src.getDataId());
+                fwCurrentRect.trigger('removerect',[fwCurrentSrc]);
+//                $('#FwActEditForm').hide();
+//                $('#FwProcEditForm').show();
+                procShow();
+                $(this).bjuiajax('doAjax', { url: '/flow/act/delete?id='+fwCurrentSrc.getDataId() ,callback:function(data){
+//                    $(this).alertmsg(data.statusCode=="200" ? "info":"error",data.message);
+                }});
+            }
+        });
+        return false;
+    }
+    function actPathDeleteConfirm(){
+        if(fwCurrentRect === null){ return false;}
+        $(this).alertmsg("confirm", "是否确定要删除路径："+fwCurrentSrc.text(),{
+            okCall:function(){
+                //alert(src.getDataId());
+                fwCurrentRect.trigger('removerect',[fwCurrentSrc]);
+                $('#FwActPathEditForm').hide();
+                $('#FwProcEditForm').show();
+                $(this).bjuiajax('doAjax', { url: '/flow/act/delete_path?id='+fwCurrentSrc.getDataId() ,callback:function(data){
+//                    $(this).alertmsg(data.statusCode=="200" ? "info":"error",data.message);
+                }});
+            }
+        });
+        return false;
+    }
+    function actShow(obj,src){
+        if(fwCurrentForm =='FwAct' && src.getDataId() != 0 && src.getDataId() == $('#FwActID').val()){
+            return ;
+        }
+        fwCurrentRect =obj;
+        fwCurrentSrc = src;
+        $('#FwProcEditForm').hide();
+        $('#FwActPathEditForm').hide();
+        $('#FwActEditForm').show();
+        $('#btnActPathDelete').hide();
+        $('#btnActDelete').show();
+        $('#btnActAssign').show();
+        $('#procHeader').text('流程模板的活动节点');
+        fwCurrentForm = 'FwAct';
+        var dataID =fwCurrentSrc.getDataId();
+        $('#FwActID').val(dataID);
+        $.ajax({
+            url: "/flow/act/edit?id="+dataID,    //请求的url地址
+            dataType: "json",   //返回格式为json
+            success: function(ret) {
+                if(ret.statusCode == 200){
+                    $('#actEditTable').html(ret.actEditHtml);
+                    if(fwCurrentSrc.getDataId() == 0){      //新增
+                        $('#FwActc_name').val(fwCurrentSrc.text());
+                        $('#FwActc_proc').val($('#FwProcID').val());
+                        $('#FwActc_class').val('flow/act');
+                    }
+                    //console.log(fwCurrentSrc.getId());
+                    $('#FwActc_map_id').val(fwCurrentSrc.getId());
+                    $('#actEditTable').initui();
+                }
+            }
+        });
+
+    }
+    function pathShow(obj,src){
+        var from =src.from();
+        if(from.getDataId() == 0){
+            $(this).alertmsg("error", '请先保存活动节点： '+from.text());
+            return ;
+        }
+        var to =src.to();
+        if(to.getDataId() == 0){
+            $(this).alertmsg("error", '请先保存活动节点： '+to.text());
+            return ;
+        }
+        //alert(data);
+        fwCurrentRect =obj;
+        fwCurrentSrc = src;
+        $('#FwProcEditForm').hide();
+        $('#FwActPathEditForm').show();
+        $('#FwActEditForm').hide();
+        $('#btnActPathDelete').show();
+        $('#btnActDelete').hide();
+        $('#btnActAssign').hide();
+        $('#procHeader').text('流程模板的路径信息');
+        fwCurrentForm = 'FwActPath';
+        $('#FwActPathID').val(fwCurrentSrc.getDataId());
+        $('#FwActPathc_from').val(from.getDataId());
+        $('#FwActPathc_to').val(to.getDataId());
+        $('#FwActPathc_proc').val($('#FwProcID').val());
+        $('#FwActPathc_name').val(fwCurrentSrc.text());
+        $.ajax({
+            url: "/flow/act/get_act_path?id="+fwCurrentSrc.getDataId(),    //请求的url地址
+            dataType: "json",   //返回格式为json
+            success: function(ret) {
+                if(ret.statusCode == 200){
+                    $('#FwActPathc_domain').val(ret.data.c_domain);
+                }
+            }
+        });
+
+    }
+    function procShow(){
+        $('#FwProcEditForm').show();
+        $('#FwActPathEditForm').hide();
+        $('#FwActEditForm').hide();
+        $('#btnActPathDelete').hide();
+        $('#btnActDelete').hide();
+        $('#btnActAssign').hide();
+        $('#procHeader').text('流程模板的主信息');
+        fwCurrentForm = 'FwProc';
+    }
+    function fwSaveForm(){
+        flowBeforeClose();
+       // fwCurrentSrc.setDataId(3);
+        //alert($('#FwActc_name').val());
+        $.ajax({
+            url: "/cmpage/page/save",    //请求的url地址
+            dataType: "json",   //返回格式为json
+            data: $('#'+fwCurrentForm+'EditForm').serialize(),
+            type: "POST",   //请求方式
+            success: function(ret) {
+                $(this).alertmsg(ret.statusCode == "200" ? "info" : "error", ret.message);
+                if(ret.statusCode == "200" && fwCurrentForm != 'FwProc'){
+                    $('#'+fwCurrentForm+'ID').val(ret.data.id);
+                    fwCurrentSrc.setDataId(ret.data.id);
+                    fwCurrentSrc.setText($('#'+ fwCurrentForm +'c_name').val());
+                }
+            }
+        });
+
+        //fwCurrentRect.trigger('textchange',['testttt',fwCurrentSrc]);
+    }
+
+    function flowBeforeClose(){
+        parent.frames['mapiframe'].window.flowSave();
+        return true;
+    }
+</script>

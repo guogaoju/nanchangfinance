@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="../../mui/css/mui.min.css">
+	<style>
+		html,
+		body {
+			background-color: #efeff4;
+		}
+
+		.title {
+			margin: 20px 15px 10px;
+			color: #6d6d72;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 id="title" class="mui-title">审核</h1>
+	</header>
+	<div id="content" class="mui-content">
+		<ul class="mui-table-view mui-table-view-chevron">
+			<form class="mui-input-group erp-cmpage-appr" onSubmit="return false;">
+				<div class="mui-input-row">
+					<label style="width:30%;">结果状态:</label>
+					<input id='c_status' type="text" name='c_status' readonly="true" class="mui-input-clear mui-input" value="">
+				</div>
+				<div class="mui-input-row">
+					<label style="width:30%;">批注说明:</label>
+					<input type="text" class="mui-input-clear mui-input-speech" id='Apprc_desc' name='c_desc' placeholder="同意">
+				</div>
+				<div class="mui-input-row" style="height:200px;">
+					<label style="width:30%;">其他备注:</label>
+					<textarea type="text" class="mui-input-clear mui-input-speech" id='Apprc_memo' cols=100 name='c_memo'placeholder="同意" rows="7"></textarea>
+				</div>
+
+			</form>
+			<div class="mui-content-padded">
+				<button id='apprbtn' class="mui-btn mui-btn-block mui-btn-primary" type="button"  onclick="postData()">确认保存</button>
+			</div>
+		</ul>
+	</div>
+</body>
+
+<script src="../../js/libs/jquery-2.1.4.min.js"></script>
+<script src="../../mui/js/mui.min.js"></script>
+<script src="../../js/app.js"></script>
+<script src="../../js/cmpage.js"></script>
+<script src="../../js/cmpage/cmpage-appr.js"></script>
+
+</html>

@@ -1,0 +1,53 @@
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `p_period_stock_goods_qty_calc`(IN period_id int)
+BEGIN
+    #根据某个期次重新计算当前库存
+    #OrderApply: 1: '采购申请单',
+    #Order: 2: '采购订单',
+    #DocuArrive: 3: '到货通知单',
+    #DocuCheck: 4: '外购入库单',
+    #DocuSale: 5: '销售出库单',
+    #DocuPick: 6: '领料出库单',
+    #DocuStock: 7: '盘点单',
+    #DocuTransfer: 8: '调拨单'
+    declare begin_time timestamp;
+    declare stock_id    int;
+    declare group_id    int;
+    select  c_time_end,c_stock,c_group into begin_time,stock_id,group_id from t_period where c_id=period_id;
+    -- select c_group into group_id  from vw_stock where c_id=stock_id;
+    create table tmp_end
+        select c_goods,c_end_qty 
+            from t_period_goods 
+            where c_period =period_id;
+    create table tmp_inout
+        select c_goods, sum(c_qty *(case when (c_type in(4,7,8) and c_stock=stock_id ) then 1 
+            when (c_type in(5,6) or (c_type=8 and c_stock_to=stock_id)) then -1 else 0 end )) as sumQty
+            from vw_docu_list where c_time >begin_time and c_stock=stock_id 
+                and c_status=1213 and ((c_type in(4,5,6,7,8) and c_stock=stock_id)or (c_type=8 and c_stock_to=stock_id))
+            group by c_goods;
+            
+    #加上调入的库存    
+    update tmp_end inner join tmp_inout
+    on tmp_end.c_goods = tmp_inout.c_goods
+    set c_end_qty = tmp_end.c_end_qty + tmp_inout.sumQty;
+
+    insert tmp_end(c_goods,c_end_qty)
+        select c_goods,sumQty
+            from tmp_inout 
+            where c_goods not in(select c_goods from tmp_end);
+    
+    #更新库存数量
+    update t_stock_goods set c_qty=0 where c_stock=stock_id ;
+    update t_stock_goods inner join tmp_end B
+    on t_stock_goods.c_goods=B.c_goods and t_stock_goods.c_stock=stock_id
+        set c_qty= c_end_qty;
+    insert t_stock_goods(c_stock,c_goods,c_qty,c_qty_min,c_qty_max,c_price,c_memo,c_group,c_user)
+        select stock_id,c_goods,c_end_qty, 0,0,0,'',group_id,1
+        from tmp_end
+        where c_goods not in(select c_goods from t_stock_goods where c_stock=stock_id);
+
+    drop table tmp_end;
+    drop table tmp_inout;
+
+END;;
+DELIMITER ;
